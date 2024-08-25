@@ -12,10 +12,11 @@ Key to having these scripts work are the following packages/software - all but o
   4. seaborn [https://github.com/mwaskom/seaborn]
   5. numpy [https://github.com/numpy/numpy]
   6. scipy [https://github.com/scipy/scipy]
-  7. fastcluster [https://github.com/fastcluster/fastcluster?tab=readme-ov-file]
-  8. xlsxwriter [https://github.com/jmcnamara/XlsxWriter]
-  9. ncbi-datasets-cli [https://github.com/ncbi/datasets]
-  10. mmseqs2 [https://github.com/soedinglab/MMseqs2]
+  7. matplotlib [https://github.com/matplotlib/matplotlib]
+  8. fastcluster [https://github.com/fastcluster/fastcluster?tab=readme-ov-file]
+  9. xlsxwriter [https://github.com/jmcnamara/XlsxWriter]
+  10. ncbi-datasets-cli [https://github.com/ncbi/datasets]
+  11. mmseqs2 [https://github.com/soedinglab/MMseqs2]
 
 ### Using conda/anaconda [https://anaconda.org] ###
 We have been using anaconda to manage our python environments.  It's worked well across both mac and linux platforms and many of the issues we had in earlier days have been resolved.
