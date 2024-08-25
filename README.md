@@ -41,7 +41,6 @@ You can use our environment.yml file or just download all the packages above to 
     3.	Put the ncbi_dataset folder in your project directory.
 
 
-
 ## Getting genomic data using the NCBI datasets command line interface
 In any command line environment where ncbi-datasets-cli is installed you can type commands directly into the terminal to download genomic data and its associated metadata.
 
@@ -51,8 +50,7 @@ If you want all the Gardnerella RefSeq annotated ORFs (cds) from genomes without
 
   `$ datasets download genome taxon gardnerella --include cds --assembly-source RefSeq --exclude-atypical --annotated --exclude-multi-isolate --mag exclude --filename ncbi_dataset.zip`
 
-
-### Downloading genomes using an accession number
+### Downloading genomes using accession numbers
 
 If you know the accessions of a set of genomes.
 
@@ -64,4 +62,10 @@ You can put a lot of accession numbers into a single text file (one accession pe
 
  `$ datasets download genome accession --inputfile accessions.txt --include cds --assembly-source RefSeq --filename ncbi_dataset.zip`
 
- 
+### Downloading other types of genomic data ###
+ if you want more than just the open reading frames use the --include tag...
+ `$ datasets download genome accession --inputfile accessions.txt **--include gbff** --assembly-source RefSeq --filename ncbi_dataset.zip`
+ ...get the 'genbank flat file' (gbff) format
+ `$ datasets download genome accession --inputfile accessions.txt **--include cds,gbff** --assembly-source RefSeq --filename ncbi_dataset.zip`
+ `$ datasets download genome accession --inputfile accessions.txt **--include genome** --assembly-source RefSeq --filename ncbi_dataset.zip`
+
