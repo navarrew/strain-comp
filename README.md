@@ -10,9 +10,9 @@ Key to having these scripts work are the following packages/software - all but o
   2. biopython [https://github.com/biopython/biopython]
   3. pandas [https://github.com/pandas-dev/pandas]
   4. seaborn [https://github.com/mwaskom/seaborn]
-  5. numpy [https://github.com/numpy/numpy]
-  6. scipy [https://github.com/scipy/scipy]
-  7. matplotlib [https://github.com/matplotlib/matplotlib]
+  5. numpy [https://github.com/numpy/numpy] *seems to be installed already when installing biopython
+  6. scipy [https://github.com/scipy/scipy] *seems to be installed when installing seaborn
+  7. matplotlib [https://github.com/matplotlib/matplotlib] *seems to be installed when installing seaborn
   8. fastcluster [https://github.com/fastcluster/fastcluster?tab=readme-ov-file]
   9. xlsxwriter [https://github.com/jmcnamara/XlsxWriter]
   10. ncbi-datasets-cli [https://github.com/ncbi/datasets]
