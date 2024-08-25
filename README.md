@@ -6,19 +6,17 @@ This is a set of scripts that can be run in sequential order to process NCBI 'cd
 
 ## Getting started ##
 
-1.	Make a new folder (directory) for your project.
-  2.	Give the project folder a descriptive name like wn_iners_analysis_2024.
-  3.	If it’s easier in the moment you could call it ‘iners’ and then go back and change the name to be a more descriptive one when you’re done.  But it’s good to let people know what you did and what is in the folder.
+1.	Make a new directory (we'll call the project directory) for your project.
 
-4.	Download the necessary data from NCBI.
+2.	Download the necessary genomic data from NCBI.
 
 5.	Unzip the downloaded genomic data.  
-   a.	You should end up with a folder called **ncbi_dataset**.  
-   b.	Inside the ncbi_dataset folder should be a folder called data.
-   c.	Inside the data folder should be several folders with genome data for each strain.
-1.	The genome datafiles should be named ‘cds_from_genomic.fna’
-iv.	There should also be a file ‘assembly_data_report.jsonl’ in the data folder.
-d.	Put the ncbi_dataset folder in your project folder.  Then get started with the rename.sh script.
+  a.	You should end up with a folder called **ncbi_dataset**.
+  b.	Inside the ncbi_dataset folder should be a folder called data.
+  c.	Inside the data folder should be several folders with genome data for each strain.
+    1.	The genome datafiles in each will be named ‘cds_from_genomic.fna’
+    2.	There should also be a file ‘assembly_data_report.jsonl’ in the data folder.
+    3.	Put the ncbi_dataset folder in your project directory.
 
 
 
