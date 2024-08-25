@@ -13,12 +13,12 @@ If you want all the Gardnerella RefSeq annotated ORFs (cds) from genomes without
 
 ### Download genomes using an accession number
 
-If you know the accessions of a set of genome and want both the RefSeq ORFs and the full gbff file.
+If you know the accessions of a set of genomes.
 
-  _**$ datasets download genome accession GCF_01234567.1,GCF_022662295.1 **--include cds,gbff** --assembly-source RefSeq --filename ncbi_dataset.zip**_
+  _**$ datasets download genome accession GCF_01234567.1,GCF_022662295.1 --include cds --assembly-source RefSeq --filename ncbi_dataset.zip**_
 
 ### Download several genomes from a file of accession numbers ###
 
 You can put a lot of accession numbers into a single text file (one accession per line) and feed them into the download program using the --inputfile flag.  The file does not need to be named accessions.txt.
 
- _**$ datasets download genome accession --inputfile accessions.txt --include cds,gbff --assembly-source RefSeq --filename ncbi_dataset.zip**_
+ _**$ datasets download genome accession --inputfile accessions.txt --include cds --assembly-source RefSeq --filename ncbi_dataset.zip**_
