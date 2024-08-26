@@ -66,19 +66,19 @@ You can put a lot of accession numbers into a single text file (one accession pe
 
  `$ datasets download genome accession --inputfile accessions.txt --include cds --assembly-source RefSeq --filename ncbi_dataset.zip`
 
-### Downloading other types of genomic data ###
+### Downloading other types of genomic data (optional and not for this pipeline)###
+_For this pipeline please only download cds format files and not a mix of other file types._
 If you want more than just the open reading frames use the --include tag.
 
 To get the 'genbank flat file' (gbff) format:
  `$ datasets download genome accession --inputfile accessions.txt --include gbff --assembly-source RefSeq --filename ncbi_dataset.zip`
 
-(optional) To get the 'genbank flat file' (gbff) and cds formats in the same package:
+To get the 'genbank flat file' (gbff) and cds formats in the same package:
  `$ datasets download genome accession --inputfile accessions.txt --include cds,gbff --assembly-source RefSeq --filename ncbi_dataset.zip`
 
-(optional) To get the 'genbank flat file' (gbff) and cds formats in the same package:
+To get the full genome sequence in FASTA format:
  `$ datasets download genome accession --inputfile accessions.txt **--include genome** --assembly-source RefSeq --filename ncbi_dataset.zip`
 
-_For this pipeline please only download cds format files and not a mix of other file types._
 
 
 
