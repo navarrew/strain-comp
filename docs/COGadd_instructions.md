@@ -24,10 +24,14 @@ The cog-20.def.tab file can also be found here [https://ftp.ncbi.nih.gov/pub/COG
 
 
 ## Input parameters. ##
-- '-f', '--fasta'    name/location of input faa file (default = cluster_representative_sequences.faa)
-- '-t', '--tab'    location of cluster_table.tab (default = tab/cluster_table.tab
+
+`$ 8_COGadd.py -co 20 -d where/you/put/the/cog-20.def.tab_file`
+
+
+- '-f', '--fasta'    name/location of input faa file (default = data/mmseq-output/cluster_representative_sequences.faa)
+- '-t', '--tab'    location of cluster_table.tab (default = tables/cluster_table.tab
 - '-od', '--outdir',    set name/location of output directory without leading or trailing '/' symbols or dots (default = data/COG)
-- '-o', '--outfile',    set name of the output file (default = cluster_table_with_COGs.tab)
+- '-o', '--outfile',    set name of the output file (default = tables/cluster_table_with_COGs.tab)
 - '-d', '--definitions'    provide location of the COG definitions table (default = project directory)
 - '-co', '--confidence'    set the confidence threshold for deepnog prediction in percent (should enter at least 20)
 
