@@ -28,7 +28,7 @@ We have been using anaconda to manage our python environments.  It's worked well
 After installing conda you should create a new environment for this pipeline.  We have posted the **'environment.yml'** file that includes all packages we have installed via conda and that can be used to recreate a functional environment.
 
 
-`conda create -n whatever_you_want_to_name_your_environment -c conda-forge python=3.11 biopython mmseqs2 pandas seaborn xlsxwriter ncbi-datasets-cli`
+`conda create -n whatever_you_want_to_name_your_environment -c conda-forge python=3.11.5 biopython mmseqs2 pandas seaborn xlsxwriter ncbi-datasets-cli`
 
 Or use the 'environment.yml' file provided in this repository. The environment will be named 'navpipe' unless you modify it the yml file in a text editor prior to using it.
 
