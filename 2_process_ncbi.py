@@ -103,15 +103,18 @@ if __name__ == '__main__':
 	if "./data/fna" not in  directory_list:
 		os.mkdir("data/faa")
 
+
+	#get the names of all the fna files in the data/ncbi/data directory
 	fna_sequence_file_list = glob.glob('data/ncbi/data/*/*.fna')
 
+	#make the 'strainlist.txt' file by getting metadata in the ncbi masterLtable.tab file.
 	strain_lookup_dictionary = {}
 	fh = open('data/ncbi/master_table.tab','r')
 	lines = fh.readlines()[1:] #start reading after the first line.
 	for line in lines:
 		splitline = line[:-1].strip().split('\t')
 		assembly_id = splitline[0]
-		assembly_index_long = assembly_id[4:] #this number comes after "GCA_" or "GCF_"
+		assembly_index_long = assembly_id[4:]   #this number comes after "GCA_" or "GCF_"
 		assembly_index = assembly_index_long.split(".")[0]
 		species = splitline[1].strip()
 		strain = splitline[2]
@@ -124,11 +127,10 @@ if __name__ == '__main__':
 		strain_lookup_dictionary[assembly_index] = strain_info_line
 	fh.close()
 
-	#here we will both rename the fna files in the fna directory and build our strain list
-	fna_sequence_file_list = glob.glob('data/ncbi/data/*/*.fna')
+	#rename the fna files in the fna directory and build the strainlist.txt file
+	fh3 = open('strainlist.txt','w')	
 	temp_fna_filename_list = []
 
-	fh3 = open('strainlist.txt','w')	
 	for fna_filename in fna_sequence_file_list:
 		filename_tag_1 = fna_filename.split("_")[1]
 		filename_tag_2 = filename_tag_1.split(".")[0]	
