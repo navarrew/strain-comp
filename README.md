@@ -32,19 +32,17 @@ or use the 'environment.yml' file provided here.
 
 
 
-## Getting started analyzing genomes ##
+## Getting started analyzing genomes - the basic steps involved ##
 
 1.	Make a new directory (we'll call the project directory) for your project.
-
-2.	Download the necessary genomic data from NCBI.
-
-5.	Unzip the downloaded genomic data.  
-  a.	You should end up with a folder called **ncbi_dataset**.
-  b.	Inside the ncbi_dataset folder should be a folder called data.
-  c.	Inside the data folder should be several folders with genome data for each strain.
-    1.	The genome datafiles in each will be named ‘cds_from_genomic.fna’
-    2.	There should also be a file ‘assembly_data_report.jsonl’ in the data folder.
-    3.	Put the ncbi_dataset folder in your project directory.
+2.	Download data using the ncbi-datasets command line interface.
+3.	Put the data in your project directory.  Unzip it.
+4.	Rename the datafiles using the 1_rename.sh script.
+5.	Extract metadata, translate nucleotide to protein seqeuences with 2_process_ncbi.py script.
+6.	Cluster similar proteins and name the clusters with 3_mmseqcluster.py
+7.	Make a tab delimited file that provides metadata for all protein clusters and compares them across all strains with the 4_maketable.py script.
+8.	Use hierarchical clustering to group strains and protein clusters together with the 5_heatmap.py script
+9.	Get pretty readable output with the 6_formatxl.py script.
 
 
 ## Getting genomic data using the NCBI datasets command line interface
