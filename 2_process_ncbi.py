@@ -1,13 +1,5 @@
 #!/usr/bin/env python
 
-"""
-This script works if you start with a folder called input
-Inside of input you should have many folders each named something like GCF_##### that contain refseq
-cds fasta files.  
-The fasta files in each should be named something like GCF_029509535.1_cds.fna
-
-"""
-
 import argparse
 import os
 import glob
@@ -47,7 +39,6 @@ def get_gbkey(description_line):
 	descriptor_list = descriptors.split("] [") #further split the tags into individual items by splitting at the "] [" between each tag
 	for item in descriptor_list:
 		if "gbkey=" in str(item):
-#			print(item[6:])
 			descrip = (str(item)[6:])
 			return descrip
 	descrip = str("none")
@@ -83,21 +74,11 @@ def tree2list(directory: str) -> Iterator[Tuple[str, str, str]]:
 
 if __name__ == '__main__':
 
-	##FIRST LETS SET UP OUR DIRECTORIES
-# 	directory_list = []
-# 	for entry in os.scandir('data'):
-# 		if entry.is_dir():
-# 			directory_list.append(entry.name)
-# 		
-# 	#if not already in the current directory make the directories reports and modified_tabs
-# 	if "fna" not in directory_list:
-# 		os.mkdir("data/fna")
-# 	if "faa" not in directory_list:
-# 		os.mkdir("data/faa")
-# fna_sequence_file_list = glob.glob('data/ncbi/data/*/*.fna')
+#set up directories we'll need
+	
+	directory_list = list(tree2list('.'))  #get current directories and put into list
 
-	directory_list = list(tree2list('.'))
-
+	#stop the program if certain files and directories are not already in place
 	if "./data" not in directory_list:
 		print("\nCannot find a 'data' directory in the current directory.")
 		print("Are you sure you're in the right directory?\n")
@@ -114,15 +95,15 @@ if __name__ == '__main__':
 		print("Have you unpacked your ncbi_dataset file properly?\n")
 		exit()
 
-# #if not already in the current directory make the directories 'report' and 'heatmap'
-# 	if "./data/report" not in directory_list:
-# 		os.mkdir("data/report")
-# 	if "./data/fna" not in  directory_list:
-# 		os.mkdir("data/fna")
-# 	if "./data/fna" not in  directory_list:
-# 		os.mkdir("data/faa")
-# 
-# 	fna_sequence_file_list = glob.glob('data/ncbi/data/*/*.fna')
+	#if not already in the current directory, make the directories 'report' and 'fna' and 'faa'
+	if "./data/report" not in directory_list:
+		os.mkdir("data/report")
+	if "./data/fna" not in  directory_list:
+		os.mkdir("data/fna")
+	if "./data/fna" not in  directory_list:
+		os.mkdir("data/faa")
+
+	fna_sequence_file_list = glob.glob('data/ncbi/data/*/*.fna')
 
 	strain_lookup_dictionary = {}
 	fh = open('data/ncbi/master_table.tab','r')
