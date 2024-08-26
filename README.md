@@ -55,6 +55,7 @@ Check their permissions to see if they are 'executable'.  If not you should make
 8.	Use hierarchical clustering to group strains and protein clusters together with the 5_heatmap.py script
 9.	Get pretty readable output with the 6_formatxl.py script.
 
+![strain-comp workflow](/docs/pipeline.png)
 
 ## Getting genomic data using the NCBI datasets command line interface
 When ncbi-datasets-cli is installed you can type commands directly into the terminal to download genomic data and its associated metadata.
