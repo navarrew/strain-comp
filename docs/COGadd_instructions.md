@@ -12,8 +12,9 @@ Because DEEPNOG was developed by somebody else and the metadata is a fairly larg
 
 ## Setting up the environment for COGadd.py. ##
 
-This script uses standard Python libraries.  Setting up a new environment should be simple typing:
+This script uses standard Python libraries.  Setting up a new environment should be simple.  Create it by typing:
 
+`conda env create -n deepnog python=3.11.5 deepnog`
 
 
 ## Files you will need to provide. ##
