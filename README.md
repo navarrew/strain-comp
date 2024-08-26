@@ -7,11 +7,11 @@ This is a set of scripts developed in the Navarre lab to rapidly comapre and gro
 
 Key to having these scripts work are the following packages/software - all but one use Python, which also must be installed.
   1. python >= 3.11 (see conda/anaconda below)
-  2. ncbi-datasets-cli [https://github.com/ncbi/datasets] _conda install -c conda-forge ncbi-datasets-cli_
-  3. biopython [https://github.com/biopython/biopython] _conda install -c conda-forge biopython_
+  2. ncbi-datasets-cli [https://github.com/ncbi/datasets] - _conda install -c conda-forge ncbi-datasets-cli_
+  3. biopython [https://github.com/biopython/biopython] - _conda install -c conda-forge biopython_
   4. mmseqs2 [https://github.com/soedinglab/MMseqs2] - _conda install -c conda-forge -c bioconda mmseqs2_
-  5. pandas [https://github.com/pandas-dev/pandas]
-  6. seaborn [https://github.com/mwaskom/seaborn]
+  5. pandas [https://github.com/pandas-dev/pandas] - conda install -c conda-forge pandas
+  6. seaborn [https://github.com/mwaskom/seaborn] - conda install -c conda-forge seaborn
   7. xlsxwriter [https://github.com/jmcnamara/XlsxWriter]
   8. numpy [https://github.com/numpy/numpy] *seems to be installed already when installing biopython
   9. scipy [https://github.com/scipy/scipy] *seems to be installed when installing seaborn
