@@ -240,7 +240,6 @@ if __name__ == '__main__':
 				 "\n\nMMSEQS2 PERCENT IDENTITY CUTOFF: " + str(clustering_pct) + "%" +
 				 "\nCLUSTER PREFIX: " + str(cluster_prefix[:-1]))
 
-	print('ok at 1')
 	'''
 	┌-------------------------------------------------------------------------------┐
 	| 2. Clustering proteins by mmseq2.                                             |
@@ -254,7 +253,6 @@ if __name__ == '__main__':
 	# Remove pseudogenes from concatenated protein sequences, generating 'pseudofree.faa'
 	pseudoremover('data/faa/temp.faa')
 
-	print('ok at 2')
 	# Running mmseqs2 to obtain protein clusters
 	print("\nClustering with mmseqs2...\n")
 
