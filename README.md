@@ -139,3 +139,10 @@ This script formats the cluster_table.tab file in the 'tables' directory as an E
 
 ## Step 7 - _7_geneorder.py_ -
 
+# Adding data from other annotation tools like kofamscan (KEGG) and deepnog (COG)
+We have developed scripts to take output from kofamscan and deepnog and incorporate them into the cluster_table.tab file (which can also be parsed by formatxl.py).
+
+### Kofamscan and KEGG annotations ###
+
+
+
