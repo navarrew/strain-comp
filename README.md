@@ -158,4 +158,4 @@ Because kofamscan is a separate program maintained by KEGG, and because it has a
 
 Because deepnog is a separate program and because it has a large database file required to use it, we recommend doing the deepnog search in a separate conda environment specifically set up for deepnog and our COGadd.py script to incorporate COG annotation data into the cluster_table.tab file. 
 
-[Instructions here]()
+[Instructions here](/docs/COGadd_instructions.md#adding-cog-annotations-to-the-cluster_tabletab-file-with-deepnog-and-cogaddpy)
