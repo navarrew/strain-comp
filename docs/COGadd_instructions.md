@@ -12,19 +12,24 @@ Because DEEPNOG was developed by somebody else and the metadata is a fairly larg
 
 ## Setting up the environment for COGadd.py. ##
 
+This script uses standard Python libraries.  Setting up a new environment should be simple typing:
+
+
 
 ## Files you will need to provide. ##
 The only file you need to provide that isn't already in place after running the first five scripts in the pipeline is a table of metadata for each COG ID.  This table is called **'cog-20.def.tab'**.  We provide a recent version of the table in this repository under the 'sample data' folder.  
 
+The cog-20.def.tab file can also be found here [https://ftp.ncbi.nih.gov/pub/COG/COG2020/data/cog-20.def.tab](https://ftp.ncbi.nih.gov/pub/COG/COG2020/data/cog-20.def.tab)
 
-The file can also be found here [https://ftp.ncbi.nih.gov/pub/COG/COG2020/data/cog-20.def.tab](https://ftp.ncbi.nih.gov/pub/COG/COG2020/data/cog-20.def.tab)
+## How the script operates. ##
+The 8_COGadd.py script, when run from project directory, will invoke deepnog with the parameters you include.  
 
+First the script will tell deepnog to grab protein sequence data from the mmseq2 output file called 'data/mmseq-output/cluster_representative_sequences.faa' that was created when you ran the 3_mmseqcluster.py script.  
 
-The 8_COGadd.py script, when run from project directory, will first grab protein sequence data from the mmseq2 output file called 'cluster_representative_sequences.faa'.  It can be found in the data/mmseq-output/ directory after you run the 3_mmseqcluster.py script.  
-After assigning each protein a COG ID it will output this data to a table now located in the data/COG/ directory that it creates. 
+After assigning each protein cluster a COG ID it will output this data to a table (**deepnog_output.tab**) located in the data/COG/ directory that it creates along the way. 
 
-Then the script will link metatdata for each COG from the **cog-20.def.tab** table.  
+Then the script will link metatdata for each COG from the **cog-20.def.tab** table and put it together with the deepnog_output.tab table to make a new table called data/COG/**COG_annotations.tab**.
 
-Finally it will use the Cluster ID/COG ID associations to weave the metadata for each COG into several new columns on the cluster_table.tab file.  
+As a last step it will merge the **data/COG/COG_annotations.tab** file and the **tables/cluster_table.tab** file.  
 
-A new file will be made called **cluster_table_COG.tab**.  
+A new file will be made called **tables/cluster_table_COG.tab**.  
