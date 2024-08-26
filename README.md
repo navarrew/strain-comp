@@ -92,7 +92,7 @@ then...
 
 X
 
-## Step 3 - create a set of clustered proteins across all strains with _3_mmseq.py_  
+## Step 3 - create a set of clustered proteins across all strains with _3_mmseqcluster.py_  
 
 X
 
