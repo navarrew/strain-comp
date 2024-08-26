@@ -150,7 +150,7 @@ We have developed scripts to take output from kofamscan and deepnog searches and
 
 Because kofamscan is a separate program maintained by KEGG, and because it has a large database file that comes with it, we recommend doing the kofamscan search in a separate conda environment specifically set up for kofamscan.  Then take the resulting output file (in detail-tsv format, _see instructions below_) and then use KEGGadd.py to incorporate that data into the cluster_table.tab file. 
 
-**Instructions here:** (/docs/KEGGadd_instructions.md#adding-kegg-annotations-to-the-cluster_tabletab-file-with-kofamscan-and-keggaddpy)
+![Instructions here](/docs/KEGGadd_instructions.md#adding-kegg-annotations-to-the-cluster_tabletab-file-with-kofamscan-and-keggaddpy)
 
 ### Incorporating deepnog and COG (Clusters of Orthologous Groups) annotations ###
 
