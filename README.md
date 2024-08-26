@@ -33,7 +33,15 @@ After installing conda you should create a new environment for this pipeline.  W
 Or use the 'environment.yml' file provided in this repository. The environment will be named 'navpipe' unless you modify it in the file. 
 `conda env create -f environment.yml`
 
+## Additional steps to prepare - make these scripts findable and executable. ##
+Put the scripts into a directory that is searchable via your $PATH variable.  
+Check their permissions to see if they are 'executable'.  If not you should make them executable with the following commands (from within the directory where the scripts are kept).
 
+
+`chmod +x *.py`  _this will make all the python scripts executable_
+
+
+`chmod +x 1_rename.sh` _this will make the 1_rename.sh script executable_
 
 ## Getting started analyzing genomes - the basic steps involved ##
 
@@ -69,16 +77,6 @@ You can put a lot of accession numbers into a single text file (one accession pe
 
  `$ datasets download genome accession --inputfile accessions.txt --include cds --assembly-source RefSeq --filename ncbi_dataset.zip`
 
-
-## Additional steps to prepare - make the scripts findable and executable. ##
-Put the scripts into a directory that is searchable in your $PATH variable.  
-Check their permissions to see if they are 'executable'.  If not you should make them executable with the following commands (from within the directory where the scripts are kept).
-
-
-`chmod +x *.py`  _this will make all the python scripts executable_
-
-
-`chmod +x 1_rename.sh` _this will make the 1_rename.sh script executable_
 
 ## Step 1 - prepare raw NCBI data files for use with 1_rename.sh 
 
