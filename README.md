@@ -48,7 +48,7 @@ or use the 'environment.yml' file provided here.
 
 
 ## Getting genomic data using the NCBI datasets command line interface
-In any command line environment where ncbi-datasets-cli is installed you can type commands directly into the terminal to download genomic data and its associated metadata.
+When ncbi-datasets-cli is installed you can type commands directly into the terminal to download genomic data and its associated metadata.
 
 ### Downloading genomes using a taxonomic name
 
