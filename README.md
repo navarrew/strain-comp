@@ -3,6 +3,9 @@
 
 This is a set of scripts developed in the Navarre lab to rapidly comapre and group strains by gene content.  The output is an easy to read .xlsx worksheet that can be parsed in any number of ways.  Strains can be grouped easily using hierarchical clustering methods and common gene sets can be identified. Data from KEGG and COG/Deepnog/EGGnog can be added easily at later steps.  This type of analysis has been successfuly performed across over a thousand strains in a single run of the pipeline in less than an hour.  Analyzing a few hundred strains can be completed in less than a few minutes.
 
+![Navarre lab logo](/docs/logo.png)
+
+
 ## Dependencies ##
 
 All but one of these scripts are coded in Python, which also must be installed.  The other script is a (bash or zsh) shell script.
