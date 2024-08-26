@@ -2,9 +2,13 @@
 
 **kofamscan** is software created by KEGG.jp that uses HMM searching to assign putative functions to proteins based on their sequence.  
 
+## Setting up kofamscan
 
+We strongly suggest you set up a new environment just for kofamscan and also put all of its associated files in its own directory.  You can change the config.yml file it uses to tell the computer where to find the large hmm database and the ko-list metadata file.
 
-The kofamscan software requires a large bank of .hmm files (over 28,000 of them) and a datafile 
+The kofamscan software can be downloaded here:
+
+The kofamscan software requires a large bank of .hmm files (over 28,000 of them) which is kept in a folder called 'x'.
 
 
 
