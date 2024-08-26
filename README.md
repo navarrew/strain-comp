@@ -12,7 +12,7 @@ Key to having these scripts work are the following packages/software - all but o
   4. mmseqs2 [https://github.com/soedinglab/MMseqs2] - _conda install -c conda-forge -c bioconda mmseqs2_
   5. pandas [https://github.com/pandas-dev/pandas] - _conda install -c conda-forge pandas_
   6. seaborn [https://github.com/mwaskom/seaborn] - _conda install -c conda-forge seaborn_
-  7. xlsxwriter [https://github.com/jmcnamara/XlsxWriter]
+  7. xlsxwriter [https://github.com/jmcnamara/XlsxWriter] - _conda install -c conda-forge xlsxwriter_
   8. numpy [https://github.com/numpy/numpy] *seems to be installed already when installing biopython
   9. scipy [https://github.com/scipy/scipy] *seems to be installed when installing seaborn
   10. matplotlib [https://github.com/matplotlib/matplotlib] *seems to be installed when installing seaborn
