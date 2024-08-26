@@ -70,6 +70,8 @@ You can put a lot of accession numbers into a single text file (one accession pe
 ## Additional steps to prepare ##
 Put the scripts into a directory that is searchable in your $PATH variable.  
 Check their permissions to see if they are 'executable'.  If not you should make them executable with the following commands (from within the directory where the scripts are kept).
+
+
 `chmod +x *.py`
 
 
