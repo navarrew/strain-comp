@@ -66,22 +66,14 @@ You can put a lot of accession numbers into a single text file (one accession pe
 
  `$ datasets download genome accession --inputfile accessions.txt --include cds --assembly-source RefSeq --filename ncbi_dataset.zip`
 
-### Downloading other types of genomic data (optional and not for this pipeline)###
-_For this pipeline please only download cds format files and not a mix of other file types._
-If you want more than just the open reading frames use the --include tag.
 
-To get the 'genbank flat file' (gbff) format:
- `$ datasets download genome accession --inputfile accessions.txt --include gbff --assembly-source RefSeq --filename ncbi_dataset.zip`
-
-To get the 'genbank flat file' (gbff) and cds formats in the same package:
- `$ datasets download genome accession --inputfile accessions.txt --include cds,gbff --assembly-source RefSeq --filename ncbi_dataset.zip`
-
-To get the full genome sequence in FASTA format:
- `$ datasets download genome accession --inputfile accessions.txt **--include genome** --assembly-source RefSeq --filename ncbi_dataset.zip`
+## Additional steps to prepare ##
+Put the scripts into a directory that is searchable in your $PATH variable.  
+Check their permissions to see if they are 'executable'.  If not you should make them executable with the following commands (from within the directory where the scripts are kept).
+`chmod +x *.py`
 
 
-
-
+`chmod +x 1_rename.sh`
 
 ## Step 1 - prepare raw NCBI data files for use with 1_rename.sh 
 
@@ -96,6 +88,8 @@ then...
 
 
 ## Step 2 - generate nucleotide and protein files for each genome and to consolidate the metadata for all strains into a single file (strainlist.txt) with 2_process_ncbi.py
+This script takes the poorly named NCBI cds files and renames them by the more readable locus tags for each strain, then it adds the GC% content for each nucleotide sequence and saves then in a folder 'fna'.  Then it translates all of the sequences into proteins (faa format) and saves them in the 'faa' folder.  It also makes the 'strainlist.txt' file that has the imnportant metadata for each strain. 
+To execute the script simply type:
 
 `2_process_ncbi.py`
 
