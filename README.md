@@ -94,11 +94,11 @@ then...
 
 ## Step 2 - generate nucleotide and protein files for each genome and to consolidate the metadata for all strains into a single file (strainlist.txt) with 2_process_ncbi.py
 
-X
+`2_process_ncbi.py`
 
 ## Step 3 - create a set of clustered proteins across all strains with _3_mmseqcluster.py_  
 
-X
+`3_mmseqcluster.py -n PREFIX_FOR_CLUSTERS -p PERCENT_IDENTITY (default = 80)`
 
 ## Step 4 - _4_maketable.py_ to generate a table of strains vs. clusters.
 
@@ -112,5 +112,5 @@ X
 
 X
 
-## Step 7 - _7_formatxl.py_ -
+## Step 7 - _7_geneorder.py_ -
 
