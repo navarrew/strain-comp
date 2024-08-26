@@ -6,7 +6,7 @@
 
 We strongly suggest you set up a new environment just for kofamscan and also put all of its associated files in its own directory.  You can change the config.yml file it uses to tell the computer where to find the large hmm database and the ko-list metadata file.
 
-The kofamscan software can be downloaded via conda or directly from the KEGG.jp website.
+The kofamscan software can be downloaded directly from the KEGG.jp website or via conda.
 
 The kofamscan software requires a large bank of .hmm files (over 28,000 of them) which is kept in a folder called 'x'.
 
