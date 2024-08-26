@@ -129,7 +129,7 @@ To run the script with default settings type:
 
 `5_heatmap.py`
 
-
+> _At this point the 'cluster_table.tab' file has been rearranged with closely related strains next to each other in the table.  The remaining scripts involve making the data in the cluster_table.tab pretty (formatxl), sortable by position (geneorder), or adding additional data from other annotation pipelines to it (COGadd and KEGGadd)._
 
 ## Step 6 - make the data tables easy to read in Excel format with _6_formatxl.py_.
 This script formats the cluster_table.tab file in the 'tables' directory as an Excel file.  This both cuts the size of the table by approximately 50% but also makes it easy to read.  The xlsx file will appear in a folder called 'output'. To run the script simply type:
