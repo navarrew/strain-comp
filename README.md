@@ -3,16 +3,16 @@
 
 This is a set of scripts developed in the Navarre lab to rapidly comapre and group strains by gene content.  The output is an easy to read .xlsx worksheet that can be parsed in any number of ways.  Strains can be grouped easily using hierarchical clustering methods and common gene sets can be identified. Data from KEGG and COG/Deepnog/EGGnog can be added easily at later steps.  This type of analysis has been successfuly performed across over a thousand strains in a single run of the pipeline in less than an hour.  Analyzing a few hundred strains can be completed in less than a few minutes.
 
-## Getting started with installing dependencies ##
+## Dependencies ##
 
-Key to having these scripts work are the following packages/software - all but one use Python, which also must be installed.
-  1. python >= 3.11 (see conda/anaconda below)
-  2. ncbi-datasets-cli [https://github.com/ncbi/datasets] - _conda install -c conda-forge ncbi-datasets-cli_
-  3. biopython [https://github.com/biopython/biopython] - _conda install -c conda-forge biopython_
-  4. mmseqs2 [https://github.com/soedinglab/MMseqs2] - _conda install -c conda-forge -c bioconda mmseqs2_
-  5. pandas [https://github.com/pandas-dev/pandas] - _conda install -c conda-forge pandas_
-  6. seaborn [https://github.com/mwaskom/seaborn] - _conda install -c conda-forge seaborn_
-  7. xlsxwriter [https://github.com/jmcnamara/XlsxWriter] - _conda install -c conda-forge xlsxwriter_
+All but one of these scripts are coded in Python, which also must be installed.  The first script is a (bash or zsh) shell script.
+  1. **python** >= 3.11 (see conda/anaconda below)
+  2. **ncbi-datasets-cli** [https://github.com/ncbi/datasets] - _conda install -c conda-forge ncbi-datasets-cli_
+  3. **biopython** [https://github.com/biopython/biopython] - _conda install -c conda-forge biopython_
+  4. **mmseqs2** [https://github.com/soedinglab/MMseqs2] - _conda install -c conda-forge -c bioconda mmseqs2_
+  5. **pandas** [https://github.com/pandas-dev/pandas] - _conda install -c conda-forge pandas_
+  6. **seaborn** [https://github.com/mwaskom/seaborn] - _conda install -c conda-forge seaborn_
+  7. **xlsxwriter** [https://github.com/jmcnamara/XlsxWriter] - _conda install -c conda-forge xlsxwriter_
   8. numpy [https://github.com/numpy/numpy] *probably was installed already when installing biopython
   9. scipy [https://github.com/scipy/scipy] *probably was installed when installing seaborn
   10. matplotlib [https://github.com/matplotlib/matplotlib] *probably was installed when installing seaborn
