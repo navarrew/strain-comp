@@ -154,6 +154,6 @@ Because kofamscan is a separate program maintained by KEGG, and because it has a
 
 ### Incorporating deepnog and COG (Clusters of Orthologous Groups) annotations ###
 
-Because deepnog is a separate program and because it has a large database file required to use it, we recommend doing the deepnog search in a separate conda environment specifically set up for deepnog.  Then take the resulting output file and use COGadd.py to incorporate that data into the cluster_table.tab file. 
+Because deepnog is a separate program and because it has a large database file required to use it, we recommend doing the deepnog search in a separate conda environment specifically set up for deepnog and our COGadd.py script to incorporate COG annotation data into the cluster_table.tab file. 
 
-Instructions here:
+[Instructions here]()
