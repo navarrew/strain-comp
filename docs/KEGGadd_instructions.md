@@ -9,7 +9,7 @@ The kofamscan software requires a large bank of .hmm files (over 28,000 of them)
 
 
 
-# KofamScan
+# KofamScan instructions (I took this from its own markdown document)
 KofamScan is a gene function annotation tool based on KEGG Orthology and hidden Markov model.
 You need [KOfam database](ftp://ftp.genome.jp/pub/db/kofam) to use this tool.
 Online version is available on https://www.genome.jp/tools/kofamkoala/ .
