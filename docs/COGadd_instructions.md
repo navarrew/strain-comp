@@ -44,3 +44,6 @@ Then the script will grab metatdata for each COG from the **cog-20.def.tab** tab
 As a last step it will merge the **data/COG/COG_annotations.tab** file and the **tables/cluster_table.tab** file.  
 
 A new file will be made called **tables/cluster_table_COG.tab**.  
+
+
+## Understanding the output. ##
