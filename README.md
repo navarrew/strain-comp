@@ -110,7 +110,7 @@ example:
 The output files are stored in a folder data/mmseq_output and are used by 4_maketable.py.
 
 
-## Step 4 - _4_maketable.py_ to generate a table of strains vs. clusters.
+## Step 4 - generate a table of strains vs. protein clusters with 4_maketable.py.
 This script combines output from the mmseq clustering with the straintable.txt file made by the process_ncbi.py script to make a tab file that compares each protein cluster across all strains in the analysis.  The first few columns of the output table have metadata about the protein cluster (ie. what the protein does, how big it is, its GC content) the remaining columns are for each strain.  If a protein is present in the strain the cell will give basic information about the protein.  If the protein is absent in the strain the table cell will be filled by an asterisk.  
 Simply enter the following on the command prompt.
 
@@ -119,7 +119,7 @@ Simply enter the following on the command prompt.
 The output files are found in a folder called 'tables'.
 
 
-## Step 5 - _5_heatmap.py_ - use hierarchical clustering to group strains and protein clusters together by similarity of presence/absence. 
+## Step 5 - use hierarchical clustering to group strains and protein clusters together by presence/absence with _5_heatmap.py_. 
 This script uses hierarchical clustering by the 'seaborn' library to group strains together by relatedness based on protein presence/absence.  It will also group proteins together based on their similarily in distribution across the strains. It will produce a graphic png file and will re-sort the strainlist.txt and tab file to put related strains and proteins next to each other.
 To run the script with default settings type:
 
