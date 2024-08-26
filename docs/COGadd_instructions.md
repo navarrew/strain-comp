@@ -14,7 +14,7 @@ Because DEEPNOG was developed by somebody else and the metadata is a fairly larg
 
 This script uses standard Python libraries.  Setting up a new environment should be simple.  Create it by typing:
 
-`conda env create -n deepnog python=3.11.5 deepnog`
+`$ conda env create -n deepnog python=3.11.5 deepnog`
 
 
 ## Files you will need to provide. ##
