@@ -17,13 +17,16 @@ Key to having these scripts work are the following packages/software - all but o
   9. scipy [https://github.com/scipy/scipy] *probably was installed when installing seaborn
   10. matplotlib [https://github.com/matplotlib/matplotlib] *probably was installed when installing seaborn
   11. (optional) fastcluster [https://github.com/fastcluster/fastcluster?tab=readme-ov-file]  _fastcluster may need to be constructed from source.  It otherwise is pinned to python version 3.5, which isn't compatible with most other parts of this pipeline.  It isn't essential but makes hierarchical clustering much faster in heatmap.py if the dataset is very large._
+
       
 ### Using conda/anaconda [https://anaconda.org] ###
 We have been using anaconda to manage our python environments.  It's worked well across both mac and linux platforms and many of the issues we had in earlier days have been resolved.
 
 We have posted the **'environment.yml'** file that includes all packages we have installed.
-This file includes some packages that we tried but found weren't necessary or useful.
-You can use our environment.yml file or just download all the packages above to get a fresh start.
+
+After installing conda you should create a new environment for this pipeline.  
+
+`conda create -n whatever_you_want_to_name_your_environment -c conda-forge python=3.11`
 
 
 ## Getting started analyzing genomes ##
