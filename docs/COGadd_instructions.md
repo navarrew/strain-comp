@@ -23,7 +23,9 @@ The only file you need to provide that isn't already in place after running the 
 The cog-20.def.tab file can also be found here [https://ftp.ncbi.nih.gov/pub/COG/COG2020/data/cog-20.def.tab](https://ftp.ncbi.nih.gov/pub/COG/COG2020/data/cog-20.def.tab)
 
 
-## Input parameters. ##
+## Invoking the script and its input parameters. ##
+
+You should be able to run the script from the project directory by typing:
 
 `$ 8_COGadd.py -co 20 -d where/you/put/the/cog-20.def.tab_file`
 
