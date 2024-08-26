@@ -122,6 +122,8 @@ The output files are found in a folder called 'tables'.
 ## Step 5 - _5_heatmap.py_ - use hierarchical clustering to group strains and protein clusters together by similarity of presence/absence. 
 This script uses hierarchical clustering by the 'seaborn' library to group strains together by relatedness based on protein presence/absence.  It will also group proteins together based on their similarily in distribution across the strains. It will produce a graphic png file and will re-sort the strainlist.txt and tab file to put related strains and proteins next to each other.
 To run the script with default settings type:
+
+
 `5_heatmap.py`
 
 
