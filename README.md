@@ -97,16 +97,20 @@ then...
 `2_process_ncbi.py`
 
 ## Step 3 - create a set of clustered proteins across all strains with _3_mmseqcluster.py_  
+This script takes the protein files from all the strains and concatenates them.  It uses mmseq2 clusters the proteins together by relatedness (similar proteins from each strain are grouped together into a single cluster).  Each protein cluster group is given a unique identifier with a prefix you can define using the -n flag (default = CLUSTER).  The output files are stored in a folder data/mmseq_output and are used by 4_maketable.py.
+
 
 `3_mmseqcluster.py -n PREFIX_FOR_CLUSTERS -p PERCENT_IDENTITY (default = 80)`
+example:
+`3_mmseqcluster.py -n LACTOBACILLUS -p 85`
+
+
 
 ## Step 4 - _4_maketable.py_ to generate a table of strains vs. clusters.
-
-X
+This script combines output from the mmseq clustering with the straintable.txt file made by the process_ncbi.py script to make a tab file that compares each protein cluster across all strains in the analysis.  The first few columns of the output table have metadata about the protein cluster (ie. what the protein does, how big it is, its GC content) the remaining columns are for each strain.  If a protein is present in the strain the cell will give basic information about the protein.  If the protein is absent in the strain the table cell will be filled by an asterisk.  
 
 ## Step 5 - _5_heatmap.py_ - use hierarchical clustering to group strains and protein clusters together by similarity of presence/absence. 
-
-X
+This script uses hierarchical clustering by the 'seaborn' library to group strains together by relatedness based on protein presence/absence.  It will also group proteins together based on their similarily in distribution across the strains. It will produce a graphic png file and will re-sort the strainlist.txt and tab file to put related strains and proteins next to each other.
 
 ## Step 6 - _6_formatxl.py_ -
 
