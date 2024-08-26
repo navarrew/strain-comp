@@ -21,14 +21,18 @@ The only file you need to provide that isn't already in place after running the 
 
 The cog-20.def.tab file can also be found here [https://ftp.ncbi.nih.gov/pub/COG/COG2020/data/cog-20.def.tab](https://ftp.ncbi.nih.gov/pub/COG/COG2020/data/cog-20.def.tab)
 
+
+## Input parameters. ##
+
+
 ## How the script operates. ##
 The 8_COGadd.py script, when run from project directory, will invoke deepnog with the parameters you include.  
 
 First the script will tell deepnog to grab protein sequence data from the mmseq2 output file called 'data/mmseq-output/cluster_representative_sequences.faa' that was created when you ran the 3_mmseqcluster.py script.  
 
-After assigning each protein cluster a COG ID it will output this data to a table (**deepnog_output.tab**) located in the data/COG/ directory that it creates along the way. 
+After assigning a COG ID to each protein cluster (if possible) it will output this data to a table (**data/COG/deepnog_output.tab**). 
 
-Then the script will link metatdata for each COG from the **cog-20.def.tab** table and put it together with the deepnog_output.tab table to make a new table called data/COG/**COG_annotations.tab**.
+Then the script will grab metatdata for each COG from the **cog-20.def.tab** table and put it together with the deepnog_output table to make a new table called **data/COG/COG_annotations.tab**.
 
 As a last step it will merge the **data/COG/COG_annotations.tab** file and the **tables/cluster_table.tab** file.  
 
