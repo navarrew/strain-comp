@@ -74,13 +74,29 @@ To get the 'genbank flat file' (gbff) and cds formats in the same package:
 To get the 'genbank flat file' (gbff) and cds formats in the same package:
  `$ datasets download genome accession --inputfile accessions.txt **--include genome** --assembly-source RefSeq --filename ncbi_dataset.zip`
 
-## Step 1 - Using the 1_rename.sh script to prepare raw NCBI data files for use
+## Step 1 - _1_rename.sh_ to prepare raw NCBI data files for use
 
 X
 
-## Step 2 - Using 2_process_ncbi.py to generate nucleotide and protein files for each genome and to consolidate the metadata for all strains into a single file (strainlist.txt)
+## Step 2 - _2_process_ncbi.py_ to generate nucleotide and protein files for each genome and to consolidate the metadata for all strains into a single file (strainlist.txt)
 
 X
 
-## Step 3 - Using 3_mmseq.py to generate clusters of similar proteins across all strains. 
+## Step 3 - _3_mmseq.py_ to generate clusters of similar proteins across all strains. 
+
+X
+
+## Step 4 - _4_maketable.py_ to generate a table of strains vs. clusters.
+
+X
+
+## Step 5 - _5_heatmap.py_ - use hierarchical clustering to group strains and protein clusters together by similarity of presence/absence. 
+
+X
+
+## Step 6 - _6_geneorder.py_ -
+
+X
+
+## Step 7 - _7_formatxl.py_ -
 
