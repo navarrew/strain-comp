@@ -30,7 +30,9 @@ After installing conda you should create a new environment for this pipeline.  W
 
 `conda create -n whatever_you_want_to_name_your_environment -c conda-forge python=3.11 biopython mmseqs2 pandas seaborn xlsxwriter ncbi-datasets-cli`
 
-Or use the 'environment.yml' file provided in this repository. The environment will be named 'navpipe' unless you modify it in the file. 
+Or use the 'environment.yml' file provided in this repository. The environment will be named 'navpipe' unless you modify it the yml file in a text editor prior to using it.
+
+
 `conda env create -f environment.yml`
 
 ## Additional steps to prepare - make these scripts findable and executable. ##
