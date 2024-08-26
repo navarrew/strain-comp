@@ -22,9 +22,8 @@ Key to having these scripts work are the following packages/software - all but o
 ### Using conda/anaconda [https://anaconda.org] ###
 We have been using anaconda to manage our python environments.  It's worked well across both mac and linux platforms and many of the issues we had in earlier days have been resolved.
 
-We have posted the **'environment.yml'** file that includes all packages we have installed.
+After installing conda you should create a new environment for this pipeline.  We have posted the **'environment.yml'** file that includes all packages we have installed via conda and that can be used to recreate a functional environment.
 
-After installing conda you should create a new environment for this pipeline.  
 
 `conda create -n whatever_you_want_to_name_your_environment -c conda-forge python=3.11 biopython mmseqs2 pandas seaborn xlsxwriter ncbi-datasets-cli`
 
