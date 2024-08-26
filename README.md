@@ -64,8 +64,11 @@ You can put a lot of accession numbers into a single text file (one accession pe
 
 ### Downloading other types of genomic data ###
  if you want more than just the open reading frames use the --include tag...
+
  `$ datasets download genome accession --inputfile accessions.txt **--include gbff** --assembly-source RefSeq --filename ncbi_dataset.zip`
  ...get the 'genbank flat file' (gbff) format
+
+
  `$ datasets download genome accession --inputfile accessions.txt **--include cds,gbff** --assembly-source RefSeq --filename ncbi_dataset.zip`
  `$ datasets download genome accession --inputfile accessions.txt **--include genome** --assembly-source RefSeq --filename ncbi_dataset.zip`
 
