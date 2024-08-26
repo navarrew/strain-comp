@@ -76,7 +76,10 @@ To get the 'genbank flat file' (gbff) and cds formats in the same package:
 
 ## Step 1 - _1_rename.sh_ to prepare raw NCBI data files for use
 
-X
+Make a directory for your project and put the zip file of genomic data inside of it.  
+In the terminal go to the project directory, activate the conda environment you have created for this pipeline, then type:
+`1_rename.sh`
+
 
 ## Step 2 - _2_process_ncbi.py_ to generate nucleotide and protein files for each genome and to consolidate the metadata for all strains into a single file (strainlist.txt)
 
