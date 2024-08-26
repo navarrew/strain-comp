@@ -1,7 +1,7 @@
 # strain-comp
-Scripts to compare bacterial genomes
+## Scripts to compare bacterial genomes
 
-This is a set of scripts that can be run in sequential order to process NCBI 'cds' files to compare multiple strains to each other by gene content.
+This is a set of scripts developed in the Navarre lab to rapidly comapre and group strains by gene content.  The output is an easy to read .xlsx worksheet that can be parsed in any number of ways.  Strains can be grouped easily using hierarchical clustering methods and common gene sets can be identified. Data from KEGG and COG/Deepnog/EGGnog can be added easily at later steps.  This type of analysis has been successfuly performed across over a thousand strains in a single run of the pipeline in less than an hour.  Analyzing a few hundred strains can be completed in less than a few minutes.
 
 ## Getting started with installing dependencies ##
 
@@ -73,4 +73,14 @@ To get the 'genbank flat file' (gbff) and cds formats in the same package:
 
 To get the 'genbank flat file' (gbff) and cds formats in the same package:
  `$ datasets download genome accession --inputfile accessions.txt **--include genome** --assembly-source RefSeq --filename ncbi_dataset.zip`
+
+## Step 1 - Using the 1_rename.sh script to prepare raw NCBI data files for use
+
+X
+
+## Step 2 - Using 2_process_ncbi.py to generate nucleotide and protein files for each genome and to consolidate the metadata for all strains into a single file (strainlist.txt)
+
+X
+
+## Step 3 - Using 3_mmseq.py to generate clusters of similar proteins across all strains. 
 
