@@ -75,6 +75,7 @@ To get the 'genbank flat file' (gbff) and cds formats in the same package:
  `$ datasets download genome accession --inputfile accessions.txt **--include genome** --assembly-source RefSeq --filename ncbi_dataset.zip`
 
 
+
 ## Step 1 - _1_rename.sh_ to prepare raw NCBI data files for use
 
 Make a directory for your project and put the zip file of genomic data inside of it.  
