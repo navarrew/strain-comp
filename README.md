@@ -138,6 +138,7 @@ This script formats the cluster_table.tab file in the 'tables' directory as an E
 
 
 ## Step 7 - _7_geneorder.py_ -
+The cluster_table.tab file created by 4_maketable.py serves as the primary 'database' created by this pipeline.  Each cell holds data for a given protein (row) in a given strain (column).  The data in these cells can be easily rearranged so that the 'gene position' appears up front in each cell.  This makes it easy to sort genes by their position in a genome by simply selecting that column and asking Excel to sort it in ascending or descending order. 
 
 # Adding data from other annotation tools like kofamscan (KEGG) and deepnog (COG)
 We have developed scripts to take output from kofamscan and deepnog and incorporate them into the cluster_table.tab file (which can also be parsed by formatxl.py).
