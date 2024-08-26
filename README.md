@@ -8,7 +8,9 @@ This is a set of scripts developed in the Navarre lab to rapidly comapre and gro
 
 ## Dependencies ##
 
-All but one of these scripts are coded in Python, which also must be installed.  The other script is a (bash or zsh) shell script.
+All but one of these scripts are coded in Python.  The other script is a (bash or zsh) shell script.
+
+These scripts depend on several other packages (each of which also depend on packages).  In total over 90 different packages will be installed to get these scripts to work.  Fortunately most of these are installed automatically by just intalling a few important top-level packages like biopython, pandas, and seaborn.
   1. **python** >= 3.11 (see conda/anaconda below)
   2. **ncbi-datasets-cli** [https://github.com/ncbi/datasets] - _conda install -c conda-forge ncbi-datasets-cli_
   3. **biopython** [https://github.com/biopython/biopython] - _conda install -c conda-forge biopython_
