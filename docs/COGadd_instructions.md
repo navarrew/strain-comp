@@ -8,6 +8,9 @@ We developed the COGadd.py to run the Deepnog prediction and to import associate
 
 Because DEEPNOG was developed by somebody else and the metadata is a fairly large table we suggest creating a separate conda environment for running deepnog.
 
+## Setting up the environment for COGadd.py. ##
+
+
 ## Files you will need to provide. ##
 The only file you need to provide that isn't already in place after running the first five scripts in the pipeline is a table of metadata for each COG ID.  We provide a recent version of the table in this repository under the 'sample data' folder.  
 
