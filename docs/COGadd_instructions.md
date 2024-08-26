@@ -2,6 +2,8 @@
 
 [DEEPNOG](https://github.com/univieCUBE/deepnog) is a package that can rapidly assigns proteins, provided in FASTA format, to one or more putative COGs (Clusters of Orthologous Groups).
 
+>Roman Feldbauer, Lukas Gosch, Lukas Lüftinger, Patrick Hyden, Arthur Flexer, Thomas Rattei, DeepNOG: Fast and accurate protein orthologous group assignment, Bioinformatics, 2020, btaa1051, https://doi.org/10.1093/bioinformatics/btaa1051
+
 When combined with the NCBI annotations, this extra metadata is useful to reveal functional links between proteins and sometimes succeeds in assigning a function to a protein that NCBI missed.  E-values are provided for each assignment to give the user a sense of how confident the prediction is.
 
 We developed the COGadd.py to run the Deepnog prediction and to import associated metadata from a table from NOG. 
