@@ -6,18 +6,18 @@ This is a set of scripts developed in the Navarre lab to rapidly comapre and gro
 ## Getting started with installing dependencies ##
 
 Key to having these scripts work are the following packages/software - all but one use Python, which also must be installed.
-  1. python (see conda/anaconda below)
-  2. biopython [https://github.com/biopython/biopython]
-  3. pandas [https://github.com/pandas-dev/pandas]
-  4. seaborn [https://github.com/mwaskom/seaborn]
-  5. numpy [https://github.com/numpy/numpy] *seems to be installed already when installing biopython
-  6. scipy [https://github.com/scipy/scipy] *seems to be installed when installing seaborn
-  7. matplotlib [https://github.com/matplotlib/matplotlib] *seems to be installed when installing seaborn
-  8. fastcluster [https://github.com/fastcluster/fastcluster?tab=readme-ov-file]
-  9. xlsxwriter [https://github.com/jmcnamara/XlsxWriter]
-  10. ncbi-datasets-cli [https://github.com/ncbi/datasets] _conda install -c conda-forge ncbi-datasets-cli_
-  11. mmseqs2 [https://github.com/soedinglab/MMseqs2] - _conda install -c conda-forge -c bioconda mmseqs2_
-
+  1. python >= 3.11 (see conda/anaconda below)
+  2. ncbi-datasets-cli [https://github.com/ncbi/datasets] _conda install -c conda-forge ncbi-datasets-cli_
+  3. biopython [https://github.com/biopython/biopython] _conda install -c conda-forge biopython_
+  4. mmseqs2 [https://github.com/soedinglab/MMseqs2] - _conda install -c conda-forge -c bioconda mmseqs2_
+  5. pandas [https://github.com/pandas-dev/pandas]
+  6. seaborn [https://github.com/mwaskom/seaborn]
+  7. xlsxwriter [https://github.com/jmcnamara/XlsxWriter]
+  8. numpy [https://github.com/numpy/numpy] *seems to be installed already when installing biopython
+  9. scipy [https://github.com/scipy/scipy] *seems to be installed when installing seaborn
+  10. matplotlib [https://github.com/matplotlib/matplotlib] *seems to be installed when installing seaborn
+  11. fastcluster [https://github.com/fastcluster/fastcluster?tab=readme-ov-file]
+      
 ### Using conda/anaconda [https://anaconda.org] ###
 We have been using anaconda to manage our python environments.  It's worked well across both mac and linux platforms and many of the issues we had in earlier days have been resolved.
 
