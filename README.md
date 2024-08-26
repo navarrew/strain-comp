@@ -26,7 +26,11 @@ We have posted the **'environment.yml'** file that includes all packages we have
 
 After installing conda you should create a new environment for this pipeline.  
 
-`conda create -n whatever_you_want_to_name_your_environment -c conda-forge python=3.11`
+`conda create -n whatever_you_want_to_name_your_environment -c conda-forge python=3.11 biopython mmseqs2 pandas seaborn xlsxwriter ncbi-datasets-cli`
+
+or use the 'environment.yml' file provided here.  
+`conda env create -f environment.yml`
+
 
 
 ## Getting started analyzing genomes ##
