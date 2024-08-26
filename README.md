@@ -100,7 +100,11 @@ This script takes the protein files from all the strains and concatenates them. 
 
 
 `3_mmseqcluster.py -n PREFIX_FOR_CLUSTERS -p PERCENT_IDENTITY (default = 80)`
+
+
 example:
+
+
 `3_mmseqcluster.py -n LACTOBACILLUS -p 85`
 
 The output files are stored in a folder data/mmseq_output and are used by 4_maketable.py.
