@@ -5,7 +5,7 @@
 
 This is a set of scripts developed in the Navarre lab to rapidly comapre and group strains by gene content.  The output is an easy to read .xlsx worksheet that can be parsed in any number of ways.  Strains can be grouped easily using hierarchical clustering methods and common gene sets can be identified. Data from KEGG and COG/Deepnog/EGGnog can be added easily at later steps.  This type of analysis has been successfuly performed across over a thousand strains in a single run of the pipeline in less than an hour.  Analyzing a few hundred strains can be completed in less than a few minutes.
 
-## What you put in and what you get out. ##
+## What you put in and what you get out ##
 
 This pipeline accepts genomic data in 'cds' (nucleotide of each protein/open-reading-frame) from NCBI (preferably RefSeq).  As described below this data can be downloaded directly from the command line using the ncbi-datasets-cli tool.  It can also be downloaded from the web at the NCBI datasets genome page.  
 
@@ -13,7 +13,13 @@ At the end of step 5 you will have an easy-to-read and sort table, `cluster_tabl
 
 ![cluster_table_sample_image](/docs/table.png)
 
-## Dependencies. ##
+In the cluster table, the rows correspond to different types of proteins (proteins clustered into a common group by sequence similarity).  The left portion of the table contains metatdata for each protein including its NCBI annotation, its average length, average GC% (and GC% spread across all genes in the cluster), how many total proteins of that type exist across all strains (total count) and how many strains have the protein (strain count). The total count and strain count will differ if some strains encode multiple copies of a protein (e.g. transposases).  
+
+The right portion of the table has data for each strain/isolate (one strain per column).  The headers for the strains (first row) are shaded based on the 'completeness' of the genome assembly.  Fully circularized genomes are given a bright green header.  Scaffolded genomes are given a medium green header.  Contigs are given a light green header. 
+
+>In the example above you can see that some strains encode (or lack) different clusters of genes.  This allows you to easily visualize what is present and absent across hundreds of genomes and rapidly identify what functions are common to all strains and what functions are strain-dependent.  In our experience we find that phage-resistance genes are highly variable across strains while 'housekeeping genes' are uniformly present within a species.
+
+## Dependencies ##
 
 All but one of these scripts are coded in Python.  The other script is a (bash or zsh) shell script.
 
