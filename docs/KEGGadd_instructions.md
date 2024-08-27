@@ -49,7 +49,9 @@ If you have set the config.yml file correctly and you have activated the kofam e
 
 ```
 kofamscan -o species_detail.tab -f detail-tsv --tmp-dir=keggtemp data/mmseq-output/cluster_representative_sequences.faa
+```
 - or -
+```
 exec_annotation -o species_detail.tab -f detail-tsv --tmp-dir=keggtemp data/mmseq-output/cluster_representative_sequences.faa
 ```
 
