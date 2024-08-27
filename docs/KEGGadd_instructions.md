@@ -9,7 +9,6 @@ We strongly suggest you set up a new environment just for kofamscan and also put
 The kofamscan software can be downloaded directly from the KEGG.jp website or via conda.
 
 We installed kofamscan on the Navarre lab computer using conda as follows:
-
 ```
 $ conda create -n kofam. _#make a new conda environment called kofam_
 $ conda activate kofam  _#start the kofam environment_
@@ -48,11 +47,11 @@ We made an extra copy of the exec_annotation file in the ~/anaconda3/envs/kofam/
 
 If you have set the config.yml file correctly and you have activated the kofam environment you should be able to, from the project directory, simply type:
 
-'''
+```
 kofamscan -o species_detail.tab -f detail-tsv --tmp-dir=keggtemp data/mmseq-output/cluster_representative_sequences.faa
 - or -
 exec_annotation -o species_detail.tab -f detail-tsv --tmp-dir=keggtemp data/mmseq-output/cluster_representative_sequences.faa
-'''
+```
 
 ## The original KofamScan instructions (I took this from its own markdown document)
 KofamScan is a gene function annotation tool based on KEGG Orthology and hidden Markov model.
