@@ -156,8 +156,19 @@ To run the script with default settings type:
 ```
 5_heatmap.py
 ```
+You can alter the clustering methods and other parameters with the following flags:
 
-> _At this point the 'cluster_table.tab' file has been rearranged with closely related strains next to each other in the table.  The remaining scripts involve making the data in the cluster_table.tab pretty (formatxl), sortable by position (geneorder), or adding additional data from other annotation pipelines to it (COGadd and KEGGadd)._
+```
+-m', '--method', clustering method (average, ward, others, default=average)
+-r', '--range', Min and max strain hits to use in clustering analysis (format: min#:max#, default = all)
+-c', '--color', heatmap color (Blues, Reds, ...other matplotlib colors, default=Blues)
+-hm', '-hitmax', Max hits expected per cluster (int, default = 1)
+-l', '--label', Label the axes? (Y/N, default = Y)
+-o', '--order', Reorder the strainlist and table after clustering? (Y/N, default = Y)
+```
+
+> _The 'cluster_table.tab' file will be rearranged with closely related strains next to each other in the table.  The original cluster_table.tab file is archived in a folder (tables/archived) with a datestamp.
+> The remaining scripts below involve making the data in the cluster_table.tab pretty (formatxl), sortable by position (geneorder), or adding additional data from other annotation pipelines to it (COGadd and KEGGadd)._
 
 **Below is an example of a clustered 'heatmap' produced by the heatmap.py script.  Strains are clustered along the x-axis and genes are clustered along the y-axis.**
 
