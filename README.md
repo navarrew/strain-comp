@@ -129,7 +129,9 @@ This script takes the protein files from all the strains and concatenates them. 
 example:
 
 
-`$  3_mmseqcluster.py -n LACTOBACILLUS -p 85`
+```
+$  3_mmseqcluster.py -n LACTOBACILLUS -p 85
+```
 
 The output files are stored in a folder data/mmseq_output and are used by 4_maketable.py.
 
@@ -138,7 +140,9 @@ The output files are stored in a folder data/mmseq_output and are used by 4_make
 This script combines output from the mmseq clustering with the straintable.txt file made by the process_ncbi.py script to make a tab file that compares each protein cluster across all strains in the analysis.  The first few columns of the output table have metadata about the protein cluster (ie. what the protein does, how big it is, its GC content) the remaining columns are for each strain.  If a protein is present in the strain the cell will give basic information about the protein.  If the protein is absent in the strain the table cell will be filled by an asterisk.  
 Simply enter the following on the command prompt.
 
-`$  4_maketable.py`
+```
+$  4_maketable.py
+```
 
 The output files are found in a folder called 'tables'.
 
@@ -149,7 +153,9 @@ This script uses hierarchical clustering by the 'seaborn' library to group strai
 To run the script with default settings type:
 
 
-`$  5_heatmap.py`
+```
+$  5_heatmap.py
+```
 
 > _At this point the 'cluster_table.tab' file has been rearranged with closely related strains next to each other in the table.  The remaining scripts involve making the data in the cluster_table.tab pretty (formatxl), sortable by position (geneorder), or adding additional data from other annotation pipelines to it (COGadd and KEGGadd)._
 
@@ -160,7 +166,9 @@ To run the script with default settings type:
 ## Step 6 - make the data tables easy to read in Excel format with _6_formatxl.py_.
 This script formats the cluster_table.tab file in the 'tables' directory as an Excel file.  This both cuts the size of the table by approximately 50% but also makes it easy to read.  The xlsx file will appear in a folder called 'output'. To run the script simply type:
 
-`$  6_formatxl.py`
+```
+$  6_formatxl.py
+```
 
 
 
