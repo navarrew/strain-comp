@@ -193,7 +193,7 @@ This script formats the cluster_table.tab file in the 'tables' directory as an E
 ```
 6_formatxl.py
 ```
-
+`6_formatxl.py` works on cluster_table.tab files and also on the cluster tables to which COG or KEGG data have been added. 
 
 ## Step 7 - make a table that's easy to sort by gene order in the genome with _7_geneorder.py_.
 The cluster_table.tab file created by 4_maketable.py serves as the primary 'database' created by this pipeline.  Each cell holds data for a given protein (row) in a given strain (column).  The data in these cells can be easily rearranged so that the 'gene position' appears up front in each cell.  This makes it easy to sort genes by their position in a genome by simply selecting that column and asking Excel to sort it in ascending or descending order. 
