@@ -54,7 +54,10 @@ _or..._
 ```
 exec_annotation -o species_detail.tab -f detail-tsv --tmp-dir=keggtemp data/mmseq-output/cluster_representative_sequences.faa
 ```
-# Using 9_KEGGadd.py to add KEGG annotations to the cluster_table.tab file.
+Searching by kofamscan will take several minutes (often an hour or more) to complete.  The end result is a file called 'species_detail.tab' that will appear in your project directory.
+
+
+# Adding the KEGG annotations to the cluster_table.tab file with KEGGadd.py.
 
 .
 
