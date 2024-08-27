@@ -3,6 +3,7 @@
 import os
 import argparse
 import pandas as pd
+from typing import Iterator, Tuple
 
 def get_locations(cell_item):
 	first_cell_fragment = cell_item.split("]|")[1].rstrip()
@@ -19,13 +20,13 @@ def get_locations(cell_item):
 	
 def tree2list(directory: str) -> Iterator[Tuple[str, str, str]]:
 	import os
-    for i in os.scandir(directory):
-        if i.is_dir():
-            yield i.path[2:]
-            yield from tree2list(i.path)
-        else:
-            yield i.path[2:]
-            
+	for i in os.scandir(directory):
+		if i.is_dir():
+			yield i.path
+			yield from tree2list(i.path)
+		else:
+			yield i.path
+			
 if __name__ == '__main__':
 
 	directory_list = list(tree2list('tables'))
@@ -35,10 +36,11 @@ if __name__ == '__main__':
 			if '.tab' in filename:
 				filelist.append(filename)
 	filelist.sort()
+	print(filelist)
 	for i, x in enumerate(filelist):
 		print(str(i+1) + '. ' + x)
 	
-	input_filepath_index = int(input('Which file to convert? '))
+	input_filepath_index = int(input('Which cluster table to convert? '))
 	input_filepath = filelist[input_filepath_index - 1]
 	input_filename = input_filepath.split('/')[-1][0:-4]
 
@@ -72,7 +74,7 @@ if __name__ == '__main__':
 
 	final_output_table = pd.concat([annotations_table, strain_positions_table], axis=1).reindex(annotations_table.index)
 	final_output_table.reset_index(drop=False, inplace=True)
-	final_output_table.to_csv('tab/cluster_table_geneordered.tab', sep='\t')
+	final_output_table.to_csv('tables/'+ input_filename + '_geneordered.tab', sep='\t')
 
 	del annotations_table
 	del strain_data_table
