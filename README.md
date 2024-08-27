@@ -35,7 +35,7 @@ After installing conda you should create a new environment for this pipeline.  W
 Or use the 'environment.yml' file provided in this repository. The environment will be named 'navpipe' unless you modify the environment.yml file in a text editor before using it to create the environment (_change the first line: name: navpipe to name: something_else_).
 
 
-`$  conda env create -f environment.yml`
+```$  conda env create -f environment.yml```
 
 ## Additional steps to prepare - make these scripts findable and executable. ##
 Put the scripts into a directory that is searchable via your $PATH variable.  
