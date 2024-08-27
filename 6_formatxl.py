@@ -39,6 +39,12 @@ if __name__ == '__main__':
 	print("Putting table into a pandas dataframe.  Started at: " + timestart.strftime("%Y-%m-%d %H:%M:%S"))
 	input_table = pd.read_csv(input_filepath, sep='\t')
 
+#if the table already has an 'index' column in the first column, remove it.
+#It's going to be added back in the process.  We'll get two index columns if we don't.
+	table_columns = list(input_table)
+	if table_columns[0] == "Unnamed: 0":
+		input_table = input_table.drop(input_table.columns[0], axis=1)
+
 	timestart = datetime.now()
 	print("Putting pandas dataframes into an excelwriter object.  Started at: " + timestart.strftime("%Y-%m-%d %H:%M:%S"))
 
