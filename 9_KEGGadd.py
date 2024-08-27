@@ -33,6 +33,9 @@ directory_list = []
 for entry in os.scandir():
 	if entry.is_dir():
 		directory_list.append(entry.name)
+if 'tables' not in directory_list:
+	print("\nCannot find the tables directory!  Are you sure you're in the right place?")
+	exit()
 if 'report' not in directory_list:
 	os.mkdir('report')
 	
