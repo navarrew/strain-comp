@@ -73,10 +73,20 @@ if __name__ == '__main__':
 	header_format_cog.set_fg_color('#FFBF00')
 
 
-	#for the strain and hit count column headers
+	#for the hit count column header
 	header_format_counts = workbook.add_format(default_parameters)
 	header_format_counts.set_fg_color('#00F900')
 
+	#for the strain count column header
+	header_format_straincounts = workbook.add_format(default_parameters)
+	header_format_straincounts.set_fg_color('#00F900')
+	header_format_straincounts.set_right(2)
+
+	#for the right border on columns to separate
+	border_parameters = {"right": 2}
+	border_format = workbook.add_format(border_parameters)
+
+		
 	#strain headers will be rotated so the locus prefix is visible.
 	rotated_parameters = {"bold": True, "text_wrap": True, "valign": "bottom", "border": 1, "rotation": 90} 
 	#for complete genomes use a bright green.  Get less bright with each lower assembly step. 
@@ -118,18 +128,23 @@ if __name__ == '__main__':
 			if value == "NCBI annotations":
 				worksheet1.set_column(col_num + 1, col_num + 1, 45)	
 				
-		elif value == 'total count' or value == 'strain count':
+		elif value == 'total count':
 			worksheet1.write(0, col_num + 1, value, header_format_counts)
 			worksheet1.set_column(col_num + 1, col_num + 1, 5)	
-			
+
+		elif value == 'strain count':
+			worksheet1.set_column(col_num + 1, col_num + 1, 5, border_format)	
+			worksheet1.write(0, col_num + 1, value, header_format_straincounts)
+
+		
 		else:
 			worksheet1.write(0, col_num + 1, value, header_format_lead)
 			worksheet1.set_column(col_num + 1, col_num + 1, 8)	
 
+	worksheet1.set_column(1, 1, cluster_name_length+1, border_format)
+	worksheet1.set_column(0, 0, 6)
 	worksheet1.write(0, 0, "original order", header_format_cluster)
 	worksheet1.write(0, 1, "CLUSTER", header_format_cluster)
-	worksheet1.set_column(0, 0, 6)
-	worksheet1.set_column(1, 1, cluster_name_length+1)
 	worksheet1.freeze_panes(1, 2)
 	
 	
