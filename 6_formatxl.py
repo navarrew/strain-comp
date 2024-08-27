@@ -32,8 +32,8 @@ if __name__ == '__main__':
 	input_filepath_index = int(input('Which file to convert? '))
 	input_filepath = filelist[input_filepath_index - 1]
 	input_filename = input_filepath.split('/')[-1][0:-4]
-	print(input_filename)
-	print(input_filepath)
+
+
 	#read the file into a pandas dataframe
 	timestart = datetime.now()
 	print("Putting table into a pandas dataframe.  Started at: " + timestart.strftime("%Y-%m-%d %H:%M:%S"))

@@ -28,14 +28,26 @@ def tree2list(directory: str) -> Iterator[Tuple[str, str, str]]:
             
 if __name__ == '__main__':
 
-	directory_list = tree2list('.')
+	directory_list = list(tree2list('tables'))
+	filelist = []
+	for filename in directory_list:
+		if 'tables/cluster_table' in filename:
+			if '.tab' in filename:
+				filelist.append(filename)
+	filelist.sort()
+	for i, x in enumerate(filelist):
+		print(str(i+1) + '. ' + x)
+	
+	input_filepath_index = int(input('Which file to convert? '))
+	input_filepath = filelist[input_filepath_index - 1]
+	input_filename = input_filepath.split('/')[-1][0:-4]
 
-	original_table = pd.read_csv('tables/cluster_table.tab', sep='\t', index_col='CLUSTER')
+	input_table = pd.read_csv(input_filepath, sep='\t', index_col='CLUSTER')
 
-	end_of_annotations_index = original_table.columns.get_loc('strain count')
-	number_of_columns = original_table.shape[1]+1 #had to add one because it doesn't count the index column I guess...or its indexed by 0.
-	annotations_table = original_table.iloc[:,0:end_of_annotations_index+1]
-	strain_data_table = original_table.iloc[:,(end_of_annotations_index+1):]	
+	end_of_annotations_index = input_table.columns.get_loc('strain count')
+	number_of_columns = input_table.shape[1]+1 #had to add one because it doesn't count the index column I guess...or its indexed by 0.
+	annotations_table = input_table.iloc[:,0:end_of_annotations_index+1]
+	strain_data_table = input_table.iloc[:,(end_of_annotations_index+1):]	
 
 	strain_data_table.to_csv('temp1.tab', sep='\t')
 
