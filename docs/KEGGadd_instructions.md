@@ -57,7 +57,7 @@ exec_annotation -o tables/kegg_detail.tab -f detail-tsv --tmp-dir=data/keggtemp 
 Searching by kofamscan will take several minutes (often an hour or more) to complete.  The end result is a file called 'kegg_detail.tab' that will appear in your tables directory.
 
 
-# Adding the KEGG annotations to the cluster_table.tab file with KEGGadd.py.
+## Adding the KEGG annotations to the cluster_table.tab file with KEGGadd.py.
 
 .
 
