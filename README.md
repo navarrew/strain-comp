@@ -56,7 +56,7 @@ Or use the 'environment.yml' file provided in this repository. The environment w
 conda env create -f environment.yml
 ```
 
-## Additional steps - make these scripts findable and executable. ##
+## Additional steps - make the scripts findable and executable ##
 Put the scripts into a directory that is searchable via your $PATH variable.  
 Check their permissions to see if they are 'executable'.  If not you should make them executable with the following commands (from within the directory where the scripts are kept).
 
