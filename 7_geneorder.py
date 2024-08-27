@@ -26,7 +26,9 @@ def tree2list(directory: str) -> Iterator[Tuple[str, str, str]]:
 			yield from tree2list(i.path)
 		else:
 			yield i.path
-			
+
+
+
 if __name__ == '__main__':
 
 	directory_list = list(tree2list('tables'))
