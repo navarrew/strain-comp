@@ -18,7 +18,13 @@ $ conda activate kofam  _#start the kofam environment_
 $ conda install bioconda::kofamscan
 ```
 
-This put the kofamscan program and all of its dependencies into the following directory on the Navarre lab computer:  ~/anaconda3/envs/kofam/bin
+This put the kofamscan program and all of its dependencies into the following directory:  ~/anaconda3/envs/kofam/bin
+
+Also in the ~/anaconda3/envs/kofam/bin folder is a text file called config.yml, which tells kofamscan where the KEGG databases are stored on our computer.  We used a text editor to adjust the text of this file as follows:
+
+profile: /home/navarrelab/Dropbox/bio/kofamscan/db/profiles/prokaryote
+ko_list: /home/navarrelab/Dropbox/bio/kofamscan/db/ko_list
+cpu: 4
 
 
 
