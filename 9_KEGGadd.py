@@ -33,12 +33,18 @@ directory_list = []
 for entry in os.scandir():
 	if entry.is_dir():
 		directory_list.append(entry.name)
-for dir in ['report', 'kegg']:
-	if dir not in directory_list:
-		os.mkdir(dir)
-
-outtab1_file = open('kegg/cluster_to_kegg.tab', 'w')
-outtab2_file = open('kegg/cluster_table_with_keggs.tab', 'w')
+if 'report' not in directory_list:
+	os.mkdir('report')
+	
+data_directory_list = []
+for entry in os.scandir('data'):
+	if entry.is_dir():
+		data_directory_list.append(entry.name)
+if 'kegg' not in data_directory_list:
+	os.mkdir('data/kegg')
+	
+outtab1_file = open('data/kegg/cluster_to_kegg.tab', 'w')
+outtab2_file = open('tables/cluster_table_KEGG.tab', 'w')
 
 #set the default file names and locations
 kegg_input_file = 'species_detail.tab'
