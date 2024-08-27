@@ -50,12 +50,14 @@ If you have set the config.yml file correctly and you have activated the kofam e
 ```
 kofamscan -o species_detail.tab -f detail-tsv --tmp-dir=keggtemp data/mmseq-output/cluster_representative_sequences.faa
 ```
-- or -
+_or..._
 ```
 exec_annotation -o species_detail.tab -f detail-tsv --tmp-dir=keggtemp data/mmseq-output/cluster_representative_sequences.faa
 ```
+.
+.
 
-## The original KofamScan instructions (I took this from its own markdown document)
+# The original KofamScan instructions (I took this from its own markdown document)
 KofamScan is a gene function annotation tool based on KEGG Orthology and hidden Markov model.
 You need [KOfam database](ftp://ftp.genome.jp/pub/db/kofam) to use this tool.
 Online version is available on https://www.genome.jp/tools/kofamkoala/ .
