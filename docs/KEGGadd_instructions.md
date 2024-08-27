@@ -8,8 +8,6 @@ We strongly suggest you set up a new environment just for kofamscan and also put
 
 The kofamscan software can be downloaded directly from the KEGG.jp website or via conda.
 
-The kofamscan software requires a large bank of .hmm files (over 28,000 of them) which is kept in a folder called 'x'.
-
 We installed kofamscan on the Navarre lab computer using conda as follows:
 
 ```
@@ -20,13 +18,41 @@ $ conda install bioconda::kofamscan
 
 This put the kofamscan program and all of its dependencies into the following directory:  ~/anaconda3/envs/kofam/bin
 
-Also in the ~/anaconda3/envs/kofam/bin folder is a text file called config.yml, which tells kofamscan where the KEGG databases are stored on our computer.  We used a text editor to adjust the text of this file as follows:
+### setting up the config.yml file
 
+Also in the ~/anaconda3/envs/kofam/bin folder is a text file called config.yml, which tells kofamscan where the KEGG databases are stored on your computer.  
+
+We used a text editor to adjust the text of this file as follows:
+
+```
 profile: /home/navarrelab/Dropbox/bio/kofamscan/db/profiles/prokaryote
 ko_list: /home/navarrelab/Dropbox/bio/kofamscan/db/ko_list
 cpu: 4
+```
 
+### The database and profiles.
 
+You can obtain the KEGG HMM database and metadata files here: https://www.genome.jp/tools/kofamkoala/
+
+We set up a special set of folders on our computer to hold the large number of files that kofamscan relies on.  The top level directory is called 'kofamscan' and it contains a directory called 'db' and inside of that is the 'profiles' directory and the ko_list file.  Kofamscan uses hmm files for its search and are more than 28,000 of these HMMs right now, each one of which is the sequence homology model for a different type of protein.  Each of these files is named with its corresponding K number (e.g. K00001.hmm, K00002.hmm, etc.) and they are all kept within the profiles directory.
+
+Also in the ‘profiles’ directory are two files called ‘eukaryote.hal’ and ‘prokaryote.hal’.  These files list the KEGG functions found in eukaryotes or prokaryotes.  This is nice because if you set your search to use the ‘prokaryote.hal’ file you won’t waste time searching your E. coli strains for eukaryotic proteins like actin.  You can make your own ‘.hal’ file and use it to tell kofamscan to only look for genes involved in pathways you care about.  This cuts down the search time a lot.
+
+The ko_list file has the metadata information about each of these 26,000 profiles including the annotation and the HMM search significance cutoffs for each.  It tells the program that ‘K00001’ is an alcohol dehydrogenase.  Also it will tell kofamscan that any protein that scores greater than X on the hmm search is a significant match to an alcohol dehyrodgenase.
+ 
+### Renaming the 'exec_annotation' file.  
+
+We made an extra copy of the exec_annotation file in the ~/anaconda3/envs/kofam/bin directory.  We renamed it 'kofamscan' so you can execute the program with either the more intuitive command 'kofamscan' or with the original 'exec_annotation' command.
+
+## Invoking kofamscan
+
+If you have set the config.yml file correctly and you have activated the kofam environment you should be able to, from the project directory, simply type:
+
+'''
+kofamscan -o species_detail.tab -f detail-tsv --tmp-dir=keggtemp data/mmseq-output/cluster_representative_sequences.faa
+- or -
+exec_annotation -o species_detail.tab -f detail-tsv --tmp-dir=keggtemp data/mmseq-output/cluster_representative_sequences.faa
+'''
 
 ## The original KofamScan instructions (I took this from its own markdown document)
 KofamScan is a gene function annotation tool based on KEGG Orthology and hidden Markov model.
