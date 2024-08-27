@@ -50,8 +50,8 @@ outtab1_file = open('data/kegg/cluster_to_kegg.tab', 'w')
 outtab2_file = open('tables/cluster_table_KEGG.tab', 'w')
 
 #set the default file names and locations
-kegg_input_file = 'species_detail.tab'
-input_cluster_table = 'tab/cluster_table.tab'
+kegg_input_file = 'tables/kegg_detail.tab'
+input_cluster_table = 'tables/cluster_table.tab'
 
 
 with open(kegg_input_file, 'r') as f:
