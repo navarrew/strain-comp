@@ -38,7 +38,7 @@ Or use the 'environment.yml' file provided in this repository. The environment w
 
 
 ```
-$  conda env create -f environment.yml
+conda env create -f environment.yml
 ```
 
 ## Additional steps to prepare - make these scripts findable and executable. ##
@@ -46,10 +46,10 @@ Put the scripts into a directory that is searchable via your $PATH variable.
 Check their permissions to see if they are 'executable'.  If not you should make them executable with the following commands (from within the directory where the scripts are kept).
 
 
-`$  chmod +x *.py`  _this will make all the python scripts executable_
+`chmod +x *.py`  #this will make all the python scripts executable
 
 
-`$  chmod +x 1_rename.sh` _this will make the 1_rename.sh script executable_
+`chmod +x 1_rename.sh` #this will make the 1_rename.sh script executable
 
 ## Getting started analyzing genomes - the basic steps involved ##
 
@@ -73,7 +73,7 @@ When ncbi-datasets-cli is installed you can type commands directly into the term
 If you want all the Gardnerella RefSeq annotated ORFs (cds) from genomes without MAGs and atypical genomes type:
 
 ```
-$  datasets download genome taxon gardnerella --include cds --assembly-source RefSeq --exclude-atypical --annotated --exclude-multi-isolate --mag exclude --filename ncbi_dataset.zip
+datasets download genome taxon gardnerella --include cds --assembly-source RefSeq --exclude-atypical --annotated --exclude-multi-isolate --mag exclude --filename ncbi_dataset.zip
 ```
 
 ### Downloading genomes using accession numbers
@@ -81,7 +81,7 @@ $  datasets download genome taxon gardnerella --include cds --assembly-source Re
 If you know the accessions of a set of genomes.
 
 ```
-$  datasets download genome accession GCF_01234567.1,GCF_022662295.1 --include cds --assembly-source RefSeq --filename ncbi_dataset.zip
+datasets download genome accession GCF_01234567.1,GCF_022662295.1 --include cds --assembly-source RefSeq --filename ncbi_dataset.zip
 ```
 
 ### Downloading several genomes from a file of accession numbers ###
@@ -130,7 +130,7 @@ example:
 
 
 ```
-$  3_mmseqcluster.py -n LACTOBACILLUS -p 85
+3_mmseqcluster.py -n LACTOBACILLUS -p 85
 ```
 
 The output files are stored in a folder data/mmseq_output and are used by 4_maketable.py.
@@ -141,7 +141,7 @@ This script combines output from the mmseq clustering with the straintable.txt f
 Simply enter the following on the command prompt.
 
 ```
-$  4_maketable.py
+4_maketable.py
 ```
 
 The output files are found in a folder called 'tables'.
@@ -150,11 +150,11 @@ The output files are found in a folder called 'tables'.
 
 ## Step 5 - use hierarchical clustering to group strains and protein clusters together by presence/absence with _5_heatmap.py_. 
 This script uses hierarchical clustering by the 'seaborn' library to group strains together by relatedness based on protein presence/absence.  It will also group proteins together based on their similarily in distribution across the strains. It will produce a graphic png file and will re-sort the strainlist.txt and tab file to put related strains and proteins next to each other.
+
 To run the script with default settings type:
 
-
 ```
-$  5_heatmap.py
+5_heatmap.py
 ```
 
 > _At this point the 'cluster_table.tab' file has been rearranged with closely related strains next to each other in the table.  The remaining scripts involve making the data in the cluster_table.tab pretty (formatxl), sortable by position (geneorder), or adding additional data from other annotation pipelines to it (COGadd and KEGGadd)._
@@ -167,9 +167,8 @@ $  5_heatmap.py
 This script formats the cluster_table.tab file in the 'tables' directory as an Excel file.  This both cuts the size of the table by approximately 50% but also makes it easy to read.  The xlsx file will appear in a folder called 'output'. To run the script simply type:
 
 ```
-$  6_formatxl.py
+6_formatxl.py
 ```
-
 
 
 ## Step 7 - make a table that's easy to sort by gene order in the genome with _7_geneorder.py_.
