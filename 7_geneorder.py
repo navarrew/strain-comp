@@ -16,6 +16,7 @@ def get_locations(cell_item):
 		position_list.append("_".join(positional_info).replace("_", ":", 1))
 	position_list.sort()
 	position_string = str(", ".join(map(str, position_list)))
+	position_string = "[" + position_string + "]"
 	return position_string
 	
 def tree2list(directory: str) -> Iterator[Tuple[str, str, str]]:
