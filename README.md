@@ -5,11 +5,13 @@
 
 This is a set of scripts developed in the Navarre lab to rapidly comapre and group strains by gene content.  The output is an easy to read .xlsx worksheet that can be parsed in any number of ways.  Strains can be grouped easily using hierarchical clustering methods and common gene sets can be identified. Data from KEGG and COG/Deepnog/EGGnog can be added easily at later steps.  This type of analysis has been successfuly performed across over a thousand strains in a single run of the pipeline in less than an hour.  Analyzing a few hundred strains can be completed in less than a few minutes.
 
+The scripts are arranged in order and could be run one after the other on default settings and you'd do very well.  Options can be tweaked at most steps including hiearchical clustering methods, sequence identity cutoffs for mmseq2 protein clustering, how you want to name protein clusters, what metadata to add, etc.
+
 ## What you put in and what you get out ##
 
 This pipeline accepts genomic data in 'cds' (nucleotide of each protein/open-reading-frame) from NCBI (preferably RefSeq).  As described below this data can be downloaded directly from the command line using the ncbi-datasets-cli tool.  It can also be downloaded from the web at the NCBI datasets genome page.  
 
-At the end of step 5 you will have an easy-to-read and sort table, `cluster_table.tab` , that has each bacterial strain in a separate column. They should be clustered together based on similarity of gene (protein coding gene) presence/absence.
+At the end of step 5 you will have an easy-to-read and sort table, `cluster_table.tab` , that has each bacterial strain in a separate column. They should be clustered together based on similarity of gene (protein coding gene) presence/absence.  Script #6 formats the cluster table in an easy to read xlsx file (see below) in just a few seconds.
 
 ![cluster_table_sample_image](/docs/table.png)
 
