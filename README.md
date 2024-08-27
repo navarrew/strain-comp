@@ -37,7 +37,9 @@ conda create -n whatever_you_want_to_name_your_environment -c conda-forge python
 Or use the 'environment.yml' file provided in this repository. The environment will be named 'navpipe' unless you modify the environment.yml file in a text editor before using it to create the environment (_change the first line: name: navpipe to name: something_else_).
 
 
-```$  conda env create -f environment.yml```
+```
+$  conda env create -f environment.yml
+```
 
 ## Additional steps to prepare - make these scripts findable and executable. ##
 Put the scripts into a directory that is searchable via your $PATH variable.  
@@ -70,19 +72,25 @@ When ncbi-datasets-cli is installed you can type commands directly into the term
 
 If you want all the Gardnerella RefSeq annotated ORFs (cds) from genomes without MAGs and atypical genomes type:
 
-  `$  datasets download genome taxon gardnerella --include cds --assembly-source RefSeq --exclude-atypical --annotated --exclude-multi-isolate --mag exclude --filename ncbi_dataset.zip`
+```
+$  datasets download genome taxon gardnerella --include cds --assembly-source RefSeq --exclude-atypical --annotated --exclude-multi-isolate --mag exclude --filename ncbi_dataset.zip
+```
 
 ### Downloading genomes using accession numbers
 
 If you know the accessions of a set of genomes.
 
-  `$  datasets download genome accession GCF_01234567.1,GCF_022662295.1 --include cds --assembly-source RefSeq --filename ncbi_dataset.zip`
+```
+$  datasets download genome accession GCF_01234567.1,GCF_022662295.1 --include cds --assembly-source RefSeq --filename ncbi_dataset.zip
+```
 
 ### Downloading several genomes from a file of accession numbers ###
 
 You can put a lot of accession numbers into a single text file (one accession per line) and feed them into the download program using the --inputfile flag.  The file does not need to be named accessions.txt.
 
- `$  datasets download genome accession --inputfile accessions.txt --include cds --assembly-source RefSeq --filename ncbi_dataset.zip`
+```
+datasets download genome accession --inputfile accessions.txt --include cds --assembly-source RefSeq --filename ncbi_dataset.zip
+```
 
 
 ## Step 1 - prepare raw NCBI data files for use with 1_rename.sh 
@@ -90,24 +98,32 @@ You can put a lot of accession numbers into a single text file (one accession pe
 Make a directory for your project and put the zip file of genomic data inside of it.  
 In the terminal go to the project directory, activate the conda environment you have created for this pipeline, then type:
 
-`$  unzip ncbi_dataset.zip`
+```
+unzip ncbi_dataset.zip
+```
 
 then...
 
-`$  1_rename.sh`
+```
+1_rename.sh
+```
 
 
 ## Step 2 - generate nucleotide and protein files for each genome and to consolidate the metadata for all strains into a single file (strainlist.txt) with 2_process_ncbi.py
 This script takes the poorly named NCBI cds files and renames them by the more readable locus tags for each strain, then it adds the GC% content for each nucleotide sequence and saves then in a folder 'fna'.  Then it translates all of the sequences into proteins (faa format) and saves them in the 'faa' folder.  It also makes the 'strainlist.txt' file that has the imnportant metadata for each strain. 
 To execute the script simply type:
 
-`$  2_process_ncbi.py`
+```
+2_process_ncbi.py
+```
 
 ## Step 3 - create a set of clustered proteins across all strains with _3_mmseqcluster.py_  
 This script takes the protein files from all the strains and concatenates them.  It uses mmseq2 clusters the proteins together by relatedness (similar proteins from each strain are grouped together into a single cluster).  Each protein cluster group is given a unique identifier with a prefix you can define using the -n flag (default = CLUSTER).  
 
 
-`$  3_mmseqcluster.py -n PREFIX_FOR_CLUSTERS -p PERCENT_IDENTITY (default = 80)`
+```
+3_mmseqcluster.py -n PREFIX_FOR_CLUSTERS -p PERCENT_IDENTITY (default = 80)
+```
 
 
 example:
