@@ -48,13 +48,13 @@ We made an extra copy of the exec_annotation file in the ~/anaconda3/envs/kofam/
 If you have set the config.yml file correctly and you have activated the kofam environment you should be able to, from the project directory, simply type:
 
 ```
-kofamscan -o species_detail.tab -f detail-tsv --tmp-dir=keggtemp data/mmseq-output/cluster_representative_sequences.faa
+kofamscan -o tables/kegg_detail.tab -f detail-tsv --tmp-dir=data/keggtemp data/mmseq-output/cluster_representative_sequences.faa
 ```
 _or..._
 ```
-exec_annotation -o species_detail.tab -f detail-tsv --tmp-dir=keggtemp data/mmseq-output/cluster_representative_sequences.faa
+exec_annotation -o tables/kegg_detail.tab -f detail-tsv --tmp-dir=data/keggtemp data/mmseq-output/cluster_representative_sequences.faa
 ```
-Searching by kofamscan will take several minutes (often an hour or more) to complete.  The end result is a file called 'species_detail.tab' that will appear in your project directory.
+Searching by kofamscan will take several minutes (often an hour or more) to complete.  The end result is a file called 'kegg_detail.tab' that will appear in your tables directory.
 
 
 # Adding the KEGG annotations to the cluster_table.tab file with KEGGadd.py.
@@ -115,7 +115,7 @@ If you are interested in only several KOs, you can make your original .hal file 
   - Set the format of the output to `FORMAT`. Three formats below are available.
   - `detail`
     - Default format. Gene name, assigned K number, threshold of the KO, hmmsearch score and E-value, and the definition of KO are shown. In addition, an asterisk '*' is added to the head of the line if the score is higher than the threshold.
-  - `detail-tsv`
+  - `**detail-tsv`**
     - Tab separated values for `detail` format.
   - `mapper`
     - Format which can be used for [KEGG Mapper](https://www.genome.jp/kegg/mapper.html) input. It includes a gene name and an assigned K number separated by a tab. Here, an assigned K number represents a hit with score above the predefined threshold. Note that for some KOs, predefined score thresholds are not available when they are represented by a very few number of sequences in KEGG GENES.
