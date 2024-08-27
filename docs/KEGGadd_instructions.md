@@ -10,6 +10,15 @@ The kofamscan software can be downloaded directly from the KEGG.jp website or vi
 
 The kofamscan software requires a large bank of .hmm files (over 28,000 of them) which is kept in a folder called 'x'.
 
+We installed kofamscan on the Navarre lab computer using conda as follows:
+
+```
+$ conda create -n kofam. _#make a new conda environment called kofam_
+$ conda activate kofam  _#start the kofam environment_
+$ conda install bioconda::kofamscan
+```
+
+This put the kofamscan program and all of its dependencies into the following directory on the Navarre lab computer:  ~/anaconda3/envs/kofam/bin
 
 
 
