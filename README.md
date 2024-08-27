@@ -137,6 +137,8 @@ To run the script with default settings type:
 
 > _At this point the 'cluster_table.tab' file has been rearranged with closely related strains next to each other in the table.  The remaining scripts involve making the data in the cluster_table.tab pretty (formatxl), sortable by position (geneorder), or adding additional data from other annotation pipelines to it (COGadd and KEGGadd)._
 
+**Below is an example of a clustered 'heatmap' produced by the heatmap.py script.  Strains are clustered along the x-axis and genes are clustered along the y-axis.**
+
 ![heatmap created by heatmap.py](/sample_data/heatmap.jpg)
 
 ## Step 6 - make the data tables easy to read in Excel format with _6_formatxl.py_.
