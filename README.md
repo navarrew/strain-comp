@@ -11,7 +11,7 @@ This pipeline accepts genomic data in 'cds' (nucleotide of each protein/open-rea
 
 At the end of step 5 you will have an easy-to-read and sort table, `cluster_table.tab` , that has each bacterial strain in a separate column. They should be clustered together based on similarity of gene (protein coding gene) presence/absence.
 
-
+[cluster_table_sample_image](/docs/table.png)
 
 ## Dependencies. ##
 
