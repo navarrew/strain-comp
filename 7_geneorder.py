@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import os
-import argparse
 import pandas as pd
 from typing import Iterator, Tuple
 
