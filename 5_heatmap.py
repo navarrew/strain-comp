@@ -216,7 +216,7 @@ if __name__ == '__main__':
 	ax.set(xlabel='STRAINS',
 		   ylabel='CLUSTERS')
 
-#how much time did it take? 
+#how much time did it take to cluster? Tell the user below.
 	timeend = datetime.now()
 	timedelta = timeend - timestart
 	print("Finished clustering at: " + timeend.strftime("%Y-%m-%d %H:%M:%S"))
@@ -224,19 +224,22 @@ if __name__ == '__main__':
 	minutes, seconds = divmod(remainder, 60)
 	print('Total time to cluster: ' + '{:02}:{:02}:{:02}'.format(int(hours), int(minutes), int(seconds)))
 
-#Save the figure
+#how much time did it take to write out the png file?  Start counting here...
 	timestart = datetime.now()
 	print("\nStarted making png figure at: " + timestart.strftime("%Y-%m-%d %H:%M:%S"))
+	
+#Save the figure
 	plt.savefig('data/heatmap/cluster_heatmap_'+timestamp+'.png', dpi=600, bbox_inches='tight', pad_inches=0)
+	cmd = 'cp data/heatmap/cluster_heatmap_'+timestamp+'.png output/heatmap.png'
+	os.system(cmd)
+
+#how much time did it take to write out the heatmap as a png file? Tell the user below.
 	timeend = datetime.now()
 	timedelta = timeend - timestart
 	print("Finished making figure at: " + timeend.strftime("%Y-%m-%d %H:%M:%S"))
 	hours, remainder = divmod(timedelta.total_seconds(), 3600)
 	minutes, seconds = divmod(remainder, 60)
 	print('Total time to make figure: ' + '{:02}:{:02}:{:02}'.format(int(hours), int(minutes), int(seconds)))
-	
-	cmd = 'cp data/heatmap/cluster_heatmap_'+timestamp+'.png output/heatmap.png'
-	os.system(cmd)
 	
 	'''
 	┌---------------------------------------------------------------------------------┐
