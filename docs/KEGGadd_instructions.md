@@ -59,6 +59,17 @@ Searching by kofamscan will take several minutes (often an hour or more) to comp
 
 ## Adding the KEGG annotations to the cluster_table.tab file with KEGGadd.py.
 
+If you have the kegg_detail.tab file and cluster_table.tab file in your tables directory then you're good to go.
+
+Just type the following at the command prompt from your project directory:
+```
+9_KEGG_add.py
+```
+Very quickly you should get two files as output:
+
+`data/kegg/cluster_to_kegg.tab` will have a list of clusters and their KO number assignments.
+
+`tables/cluster_table_KEGG.tab` will be the same as the original cluster_table with extra columns added for the KEGG annotations.  This file can be further formatted to an .xlsx file with the 6_formatxl.py script. 
 .
 
 # The original KofamScan instructions (I took this from its own markdown document)
