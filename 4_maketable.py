@@ -96,8 +96,6 @@ def get_cluster_annotations(cluster_members_list):
 		member_GC_content = float(member.split('[pctGC=')[1].split('] ')[0])
 		GC_counts.append(member_GC_content)
 
-		#Put annotations into a set
-		member_annotation = annotation_set.add(member.split('[protein=')[1].split('] ')[0])
 		
 		#Get length of proteins and find oddballs
 		memberx = member.replace('location=complement(','SPLIT_ME')

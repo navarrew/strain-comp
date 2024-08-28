@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 
-import argparse
 import os
 import glob
 import shutil 
 from Bio import SeqIO
-from Bio.Seq import Seq
 from Bio.SeqUtils import gc_fraction
 import warnings
 from Bio import BiopythonWarning
@@ -46,7 +44,6 @@ def get_gbkey(description_line):
 
 def convert_fna_to_faa(filename):
 	from Bio import SeqIO
-	from Bio.Seq import Seq
 	output_handle = open("faa/" + filename[4:].split(".")[0] + ".faa", "w")
 	for seq_record in SeqIO.parse(filename, "fasta"):
 		if get_gbkey(seq_record.description) == "CDS":
