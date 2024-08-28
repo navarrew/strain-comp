@@ -124,27 +124,34 @@ if __name__ == '__main__':
 
 	'''
 	┌---------------------------------------------------------------------┐
-	| 2. Executing hierarchical clustering and generation of the heatmap. |
+	| 2. Processing the data that will go into the clustermap.            |
 	└---------------------------------------------------------------------┘
 	'''
 
-	# Generating the heat map
+# importing cluster_hit_cout_table. tab data into a pandas dataframe called original_table
 
 	original_table = pd.read_csv('tables/cluster_hit_count_table.tab', sep='\t', index_col='CLUSTER')
 
+# grabbing the indicies (row index)
 	original_table_clusters_list = original_table.index.tolist()
 	original_table_clusters_set = set(original_table_clusters_list)
 	
+# we determine the maximum number of strains being analyzed by counting the columns with strain info
 	strainmax = original_table.shape[1] - 2
-	
+
+# the settings below are the defaults...all strains = max.  Minimum strains = 1.
 	if strainrange =="WARN THE USER":
 		max_strain_hits = strainmax
 		min_strain_hits = 1
-	
+
+# trimming the table to exclude data that won't be used in clustering.
 	table2 = original_table.loc[(original_table['strain count'] <= max_strain_hits) & (original_table['strain count'] >= min_strain_hits)]
 	table2 = table2.assign(diff=table2['total count'] - table2['strain count'])
 	table2 = table2.loc[table2['diff'] == 0]
+#we trimmed the table (table2) to create our final trimmed table, simply called 'table'
 	table = table2.iloc[:,2:-1] #remove the columns for diff, strain counts, and total counts
+
+# write the newly trimmed table out for the user to look at if they need to.
 	table.to_csv('data/heatmap/trimmed_cluster_count_table_for_heatmap.tab', sep='\t')
 
 #lets figure out which proteins were removed from the original protein clusters
@@ -176,7 +183,14 @@ if __name__ == '__main__':
 				"\nMin 'strain hits' included in clustering: " + str(min_strain_hits) +
 				"\nNumber of protein clusters analyzed: " + str(number_of_protein_clusters))
 
+	'''
+	┌---------------------------------------------------------------------┐
+	| 3. Executing hierarchical clustering and generation of the heatmap. |
+	└---------------------------------------------------------------------┘
+	'''
+
 	print("Generating heatmap.")
+#its nice to know how long clustering is taking.  This will tell us.
 	timestart = datetime.now()
 	print("\nStarted clustering at: " + timestart.strftime("%Y-%m-%d %H:%M:%S"))
 
@@ -187,7 +201,7 @@ if __name__ == '__main__':
 	# Set font scale
 	sns.set(font_scale=0.05)
 
-	# Enter user inputs into clustermap
+	# Enter user inputs into clustermap...a Seaborn object we're giving the name 'g'
 	g = sns.clustermap(table,
 					   method=method,
 					   figsize=(50, 50),
@@ -226,7 +240,7 @@ if __name__ == '__main__':
 	
 	'''
 	┌---------------------------------------------------------------------------------┐
-	| 3. Generating reordered strain list and table based on hierarchical clustering. |
+	| 4. Generating reordered strain list and table based on hierarchical clustering. |
 	└---------------------------------------------------------------------------------┘
 	'''
 
