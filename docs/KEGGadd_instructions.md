@@ -70,6 +70,7 @@ Very quickly you should get two files as output:
 `data/kegg/cluster_to_kegg.tab` will have a list of clusters and their KO number assignments.
 
 `tables/cluster_table_KEGG.tab` will be the same as the original cluster_table with extra columns added for the KEGG annotations.  This file can be further formatted to an .xlsx file with the 6_formatxl.py script. 
+
 .
 
 # The original KofamScan instructions (I took this from its own markdown document)
