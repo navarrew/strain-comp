@@ -8,9 +8,9 @@ of strains and proteins.
 '''
 
 '''
-┌----------------------------------------┐
+----------------------------------------
 | import modules						 |
-└----------------------------------------┘
+----------------------------------------
 '''
 
 import re
@@ -19,9 +19,9 @@ import argparse
 import os
 
 '''
-┌----------------------------------------┐
+----------------------------------------
 | define functions						 |
-└----------------------------------------┘
+----------------------------------------
 '''
 
 def get_locus_tag(loc):
@@ -164,31 +164,22 @@ def get_cluster_annotations(cluster_members_list):
 
 
 '''
-┌----------------------------------------┐
+----------------------------------------
 | main program							 |
-└----------------------------------------┘
+----------------------------------------
 '''
 
 
 if __name__ == '__main__':
 
-	print("\nPipeline for genomic comparisons",
-		  "Navarre lab updated August, 2024. UPDATED",
-		  "\nPlease have 'cluster_hit_count_table.tab' and 'strainlist.txt' in the working directory.",
-		  sep='\n')
+	print("\nPlease have 'cluster_hit_count_table.tab' and 'strainlist.txt' \nin the working directory.")
 
 	instructions = "tablemaker.py\n" \
 					"This will reorder and rename your protein clusters by abundance.\n" \
-					
-
-'''
-┌------------------------------------------------┐
-| set up directories and check for key files	 |
-└------------------------------------------------┘
-'''
 
 
 # Set up tab and report directories, if not already present
+
 	home_directory_list = []
 	for entry in os.scandir():
 		if entry.is_dir():
@@ -211,13 +202,7 @@ if __name__ == '__main__':
 	report.write("\n\n***TABLEMAKER.PY***\nDATE AND TIME: " + str(datetime.now()))
 
 
-'''
-┌---------------------------------------------┐
-| parse through files and join to make tables |
-└---------------------------------------------┘
-'''
-
-	print("\nMaking tables of clusters and their hits in each strain...")
+	print("Making tables of clusters and their hits in each strain...")
 	timestart = datetime.now()
 	print("Started at: " + timestart.strftime("%Y-%m-%d %H:%M:%S"))
 
@@ -239,7 +224,7 @@ if __name__ == '__main__':
 			# First section of each line in the strain list file is the locus id
 			str_loc_pre_list.append(str_info.split(' | ')[0])
 
-	print("Clustering " + str(len(str_list)) + " strains.")
+	print("The table will cover " + str(len(str_list)) + " strains.")
 
 	# Write out the header line for each of the table files
 	clus_tab.write('CLUSTER\tNCBI gene names\tNCBI annotations\tGCpct\tGC spread\tprotein length\tflags\ttotal count\tstrain count\t' + '\t'.join(str_list) + '\n')
@@ -289,7 +274,7 @@ if __name__ == '__main__':
 			hitc_tab.write(front_hitc_tab + '\t' + str(num_str_w_hits) + '\t' + hit_counts + '\n')
 
 	timestart = datetime.now()
-	print("Finished at: " + timestart.strftime("%Y-%m-%d %H:%M:%S"))
+	print("Finished at: " + timestart.strftime("%Y-%m-%d %H:%M:%S") + "\n")
 
 
 	# Close the output files
