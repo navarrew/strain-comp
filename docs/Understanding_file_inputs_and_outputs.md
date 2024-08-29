@@ -19,9 +19,9 @@ Author: William Navarre
 <tr><td valign="top">4_maketable.py</td><td valign="top">Python script. </td><tr>
 <tr><td valign="top">5_heatmap.py</td><td valign="top">Python script. </td><tr>
 <tr><td valign="top">6_formatxl.py</td><td valign="top">Python script. </td><tr>
-<tr><td valign="top">7_geneorder.py</td><td valign="top">Python script. </td><tr>
-<tr><td valign="top">8_COGadd.py</td><td valign="top">Python script. </td><tr>
-<tr><td valign="top">6_formatxl.py</td><td valign="top">Python script. </td><tr>
+<tr><td valign="top">7_geneorder.py</td><td valign="top">Python script to rearrange the data in the cluster_table cells to put genomic gene order up front.  This allows fast sorting of genes in a genome by their location and makes it easy to spot genomic islands. </td><tr>
+<tr><td valign="top">8_COGadd.py</td><td valign="top">Python script to incorporate deepnog COG annotations and metatdata into the cluster_table.tab/xlsx files. </td><tr>
+<tr><td valign="top">9_KEGGadd.py</td><td valign="top">Python script to incorporate KEGG annotations from their program 'kofamscan' into the cluster_table.tab/xlsx files. </td><tr>
 </table>
 
 
