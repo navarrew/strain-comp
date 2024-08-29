@@ -103,6 +103,9 @@ def get_cluster_annotations(cluster_members_list):
 		memberx = memberx.replace(')','')
 		member_nucleotide_length = memberx.split('SPLIT_ME')[1].split('] ')[0]
 		
+		#Put NCBI annotations into a set
+		member_annotation = annotation_set.add(member.split('[protein=')[1].split('] ')[0])
+
 		
 		if (">" in member_nucleotide_length or "<" in member_nucleotide_length):
 			trunc_members_list.append(member)
@@ -218,9 +221,12 @@ if __name__ == '__main__':
 				matches, match_list = get_matches_from_cluster(str_loc_pre, members_list)
 				hit_loci_list.append(matches)
 				hit_counts_list.append(str(len(match_list)))
-
+			#the first two items in the line include the cluster name, the NCBI gene ID.
+			#grab them here and start a new list called "front cluster info list"
 			front_cluster_info_list = terms[0:2]
+			#the next item in the line is how many total hits there are.  Grab it into a new variable 'total_cluster_hits'
 			total_cluster_hits = terms[3]
+			#now we make the first few columns as it will appear in the cluster_table.tab file. 
 			add_on_list = [cluster_annotations, cluster_GCpct, GC_spread, str(prot_length), flags, total_cluster_hits]
 			add_on = '\t'.join(add_on_list)
 			front_cluster_info_list.append(add_on)
