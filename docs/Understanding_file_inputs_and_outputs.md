@@ -25,13 +25,34 @@ Author: William Navarre
 </table>
 
 
-
 # The files you need to input
 
-##NCBI 'cds_from_genomic' files
+##NCBI 'cds_from_genomic' files has the nucleotide sequences for all the genes in each of the strains you are analyzing. 
 
-##NCBI's .json file with metadata
+.
 
-# The most important output files
+##NCBI's assembly_data_report.jsonl has most of the metadata for all the assemblies you downloaded.
 
-## cluster_table.tab and/or cluster_table.xlsx
+
+
+# The most important output files and how to read them
+
+## cluster_table.tab (cluster_table.xlsx)
+
+.
+
+### variant - cluster_table_COG
+
+.
+
+### variant - cluster_table_KEGG
+
+.
+
+## heatmap.png
+
+x
+
+## strainlist.txt
+
+
