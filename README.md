@@ -1,4 +1,4 @@
-# strain-comp
+# strain-comp ('strain compare')
 ## Compare and group bacterial genomes by gene/protein content
 
 ![Navarre lab logo2](/docs/logo.png)
