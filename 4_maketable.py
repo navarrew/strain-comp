@@ -1,9 +1,28 @@
 #!/usr/bin/env python
+'''
+This script takes info from the strainlist.txt file (made by process_ncbi.py) and 
+the cluster_header_info.tab file (made by mmseqcluser.py) to generate both the 
+cluster_table.tab file and a stripped down version of the cluster_table. tab file
+called 'cluster_hit_counts.tab' that will be used later for hierarchical clustering
+of strains and proteins.
+'''
+
+'''
+----------------------------------------
+| import modules						 |
+----------------------------------------
+'''
 
 import re
 from datetime import datetime
 import argparse
 import os
+
+'''
+----------------------------------------
+| define functions						 |
+----------------------------------------
+'''
 
 def get_locus_tag(loc):
 	"""
@@ -96,8 +115,6 @@ def get_cluster_annotations(cluster_members_list):
 		member_GC_content = float(member.split('[pctGC=')[1].split('] ')[0])
 		GC_counts.append(member_GC_content)
 
-		#Put annotations into a set
-		member_annotation = annotation_set.add(member.split('[protein=')[1].split('] ')[0])
 		
 		#Get length of proteins and find oddballs
 		memberx = member.replace('location=complement(','SPLIT_ME')
@@ -105,6 +122,9 @@ def get_cluster_annotations(cluster_members_list):
 		memberx = memberx.replace(')','')
 		member_nucleotide_length = memberx.split('SPLIT_ME')[1].split('] ')[0]
 		
+		#Put NCBI annotations into a set
+		member_annotation = annotation_set.add(member.split('[protein=')[1].split('] ')[0])
+
 		
 		if (">" in member_nucleotide_length or "<" in member_nucleotide_length):
 			trunc_members_list.append(member)
@@ -142,18 +162,24 @@ def get_cluster_annotations(cluster_members_list):
 	return GCavg, GC_diff, cluster_annotations, protein_length, flag
 
 
+
+'''
+----------------------------------------
+| main program							 |
+----------------------------------------
+'''
+
+
 if __name__ == '__main__':
 
-	print("\nPipeline for genomic comparisons",
-		  "Navarre lab updated August, 2024. UPDATED",
-		  "\nPlease have 'cluster_hit_count_table.tab' and 'strainlist.txt' in the working directory.",
-		  sep='\n')
+	print("\nPlease have 'cluster_hit_count_table.tab' and 'strainlist.txt' \nin the working directory.")
 
 	instructions = "tablemaker.py\n" \
 					"This will reorder and rename your protein clusters by abundance.\n" \
-					
 
- # Set up tab and report directories, if not already present
+
+# Set up tab and report directories, if not already present
+
 	home_directory_list = []
 	for entry in os.scandir():
 		if entry.is_dir():
@@ -167,24 +193,27 @@ if __name__ == '__main__':
 			data_directory_list.append(entry.name)
 	if "report" not in data_directory_list:
 		os.mkdir("data/report")
-			
+
+#this allows a help message if the user put -h in the command line			
 	parser = argparse.ArgumentParser(add_help=True, description=instructions)
 	
 	# Write the date and time of execution to the report file
 	report = open('data/report/report.txt', 'a')
 	report.write("\n\n***TABLEMAKER.PY***\nDATE AND TIME: " + str(datetime.now()))
 
-	print("\nMaking tables of clusters and their hits in each strain...\n")
 
-	# Take the file "cluster_header_info.tab" and parse it into three different tab files:
+	print("Making tables of clusters and their hits in each strain...")
+	timestart = datetime.now()
+	print("Started at: " + timestart.strftime("%Y-%m-%d %H:%M:%S"))
+
+	# Take the file "cluster_header_info.tab" and parse it into  different tab files:
 	# (1) "cluster_table.tab" shows the full information for all protein members belonging to a cluster in a strain
 	# (2) "cluster_hit_count_table.tab" only shows the number of hits for a cluster in each strain
-	# (3) "cluster_count_table_for_heatmap.tab" excludes singleton hits and universal hits.
 
 	clus_tab = open('tables/cluster_table.tab', 'w')
 	hitc_tab = open('tables/cluster_hit_count_table.tab', 'w')
 
-	# Read in the strain list
+	# Read in the strain list - this will provide the headers for the right half of the table
 	with open('strainlist.txt') as f:
 		str_list = [line.rstrip() for line in f]
 		# Count the total number of strains analyzed
@@ -194,6 +223,8 @@ if __name__ == '__main__':
 		for str_info in str_list:
 			# First section of each line in the strain list file is the locus id
 			str_loc_pre_list.append(str_info.split(' | ')[0])
+
+	print("The table will cover " + str(len(str_list)) + " strains.")
 
 	# Write out the header line for each of the table files
 	clus_tab.write('CLUSTER\tNCBI gene names\tNCBI annotations\tGCpct\tGC spread\tprotein length\tflags\ttotal count\tstrain count\t' + '\t'.join(str_list) + '\n')
@@ -220,9 +251,12 @@ if __name__ == '__main__':
 				matches, match_list = get_matches_from_cluster(str_loc_pre, members_list)
 				hit_loci_list.append(matches)
 				hit_counts_list.append(str(len(match_list)))
-
+			#the first two items in the line include the cluster name and the NCBI gene ID.
+			#grab them here and start a new list called "front cluster info list"
 			front_cluster_info_list = terms[0:2]
+			#another item in the line is how many total hits there are.  Grab it into a new variable 'total_cluster_hits'
 			total_cluster_hits = terms[3]
+			#now we make the first few columns as it will appear in the cluster_table.tab file. 
 			add_on_list = [cluster_annotations, cluster_GCpct, GC_spread, str(prot_length), flags, total_cluster_hits]
 			add_on = '\t'.join(add_on_list)
 			front_cluster_info_list.append(add_on)
@@ -239,7 +273,10 @@ if __name__ == '__main__':
 			clus_tab.write(front_clus_tab + '\t' + str(num_str_w_hits) + '\t' + hit_loci + '\n')
 			hitc_tab.write(front_hitc_tab + '\t' + str(num_str_w_hits) + '\t' + hit_counts + '\n')
 
+	timestart = datetime.now()
+	print("Finished at: " + timestart.strftime("%Y-%m-%d %H:%M:%S") + "\n")
 
-	# Close the three output files
+
+	# Close the output files
 	clus_tab.close()
 	hitc_tab.close()

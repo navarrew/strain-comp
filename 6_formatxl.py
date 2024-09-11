@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 
 import os
-import argparse
 import pandas as pd
 import xlsxwriter
-from datetime import datetime, timedelta
+from datetime import datetime
 from typing import Iterator, Tuple
 
 def tree2list(directory: str) -> Iterator[Tuple[str, str, str]]:

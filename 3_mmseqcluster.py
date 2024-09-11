@@ -59,19 +59,6 @@ def pseudoremover(infile):
 					outfile.write('>' + seq_rec.description + '\n')
 					outfile.write(line_format(str(seq_rec.seq) + '\n'))
 
-def line_format(seq):
-	"""
-	Returns a FASTA sequence with 80 characters per line.
-	"""
-
-	newline_list = []
-	while seq:
-		newline = seq[0:80]
-		newline_list.append(newline)
-		seq = seq[80:]
-	output = '\n'.join(newline_list)
-	return output
-
 
 def get_cluster_list(infile):
 	"""
@@ -129,33 +116,6 @@ def convert_fasta_header_format(fasta_header):
 			fasta_protein_id = fasta_item[11:-1]
 	output_string = fasta_locus_tag + '|' + fasta_protein_id + '|' + accession
 	return output_string
-
-
-def get_matches_from_cluster(str_loc_pre, members_list):
-	"""
-	Takes a strain locus prefix and a list of members in a cluster from a single line of "cluster_header_info.tab".
-	Outputs a string and list of protein matches for the cluster in the given strain.
-	"""
-
-	match_list = []
-	for member in members_list:
-		mem_loc_pre = get_locus_tag(member.split('[locus_tag=')[1].split('] ')[0])
-		if mem_loc_pre == str_loc_pre:
-			member_form = convert_fasta_header_format(member)
-			# Append the hit to a growing list of hits for this particular strain
-			match_list.append(member_form)
-			# Remove the match from the list to shorten future searches through it, saving time
-			members_list.remove(member)
-
-	# If there are one or more matches in the list,
-	# Add the number of matches in the list and join all the matches together
-	if len(match_list) >= 1:
-		matches = '[' + str(len(match_list)) + ']|' + str(', '.join(match_list))
-		return matches, match_list
-	# If there are no matches in the list, use "*" as a placeholder
-	else:
-		matches = '*'
-		return matches, match_list
 
 
 def get_gene_prot_names(header):

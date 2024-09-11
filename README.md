@@ -1,5 +1,5 @@
-# strain-comp
-## Compare and group bacterial genomes by gene/protein content
+# strain-comp ('strain compare')
+## A pipeline to compare and group related bacterial genomes by gene/protein content
 
 ![Navarre lab logo2](/docs/logo.png)
 
