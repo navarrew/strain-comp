@@ -249,7 +249,8 @@ if __name__ == '__main__':
 	summ_file = open('data/mmseq_output/cluster_summary_with_sequences.faa', 'w')
 	repr_file = open('data/mmseq_output/cluster_representative_sequences.faa', 'w')
 	head_file = open('data/mmseq_output/cluster_header_info.tab', 'w')
-	reverse_link_cluster_file = open('data/mmseq_output/locus2cluster.tab', 'w')
+	cluster_metadata_file = open('data/mmseq_output/cluster_metadata.tab', 'w')
+	cluster_metadata_file.write('LOCUS_ID\tCLUSTER_ID\tPROTEIN_ID\tACCESSION\tNCBI_ANNOTATION\n')
 
 	# Set index for cluster number
 	j = 1
@@ -282,14 +283,14 @@ if __name__ == '__main__':
 						str('\t'.join(header_list)) + '\n')
 
 		for header2 in header_list:
-			accession_in_header2 = header2[0:header2.find(" ")]
+			accession_in_header2 = "lcl|" + header2[0:header2.find(" ")] #find gives the location of the first space and you trim the string from zero to the first space.
 			locus_tag_in_header2_front = header2[(header2.find("locus_tag=")+10):]
 			locus_tag_in_header2 = locus_tag_in_header2_front[:locus_tag_in_header2_front.find("] ")]
 			WP_tag_in_header2_front = header2[(header2.find("protein_id=")+11):]
 			WP_tag_in_header2 = WP_tag_in_header2_front[:WP_tag_in_header2_front.find("] ")]
 			info_tag_in_header2_front = header2[(header2.find("protein=")+8):]
 			info_tag_in_header2 = info_tag_in_header2_front[:info_tag_in_header2_front.find("] ")]
-			reverse_link_cluster_file.write(locus_tag_in_header2 + '\t' + accession_in_header2 + '\t' + cluster_prefix + str(j)+ '\t' + WP_tag_in_header2 + '\t' + info_tag_in_header2 + "\n")
+			cluster_metadata_file.write(locus_tag_in_header2 + '\t' + cluster_prefix + cluster_index + '\t' + WP_tag_in_header2 + '\t' + accession_in_header2 + '\t' + info_tag_in_header2 + "\n")
 			
 		# Increase the number of clusters processed by 1
 		j += 1
@@ -298,7 +299,7 @@ if __name__ == '__main__':
 	summ_file.close()
 	repr_file.close()
 	head_file.close()
-	reverse_link_cluster_file.close()
+	cluster_metadata_file.close()
 
 	# Write the total number of clusters to the report file
 	report.write("\n\nTotal number of protein clusters: " + str(j))

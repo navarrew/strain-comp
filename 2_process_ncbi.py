@@ -176,7 +176,12 @@ if __name__ == '__main__':
 			#NOTE below we remove the >lcl from the sequence annotation
 			output_handle_faa.write(">" + str(record.description)[4:]+"\n")
 			output_handle_faa.write(line_format(str(record.seq.translate()[:-1]))+"\n")
+		
 		output_handle_faa.close()		
 		output_handle_fna.close()
+		
 		remove_command = "rm " + temp_fna_filename[0]
 		os.system(remove_command)
+		
+		concatenate_fna_files_command = "cat data/fna/*.fna > data/fna/all.fna"
+		os.system(concatenate_fna_files_command)
