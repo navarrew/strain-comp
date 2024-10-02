@@ -82,7 +82,7 @@ if __name__ == '__main__':
 		print("Have you unpacked your ncbi_dataset file properly?\n")
 		exit()
 
-	if "./data/ncbi/data" not in directory_list:
+	if "./data/ncbi/cds" not in directory_list:
 		print("\nCannot find the folder with GCF files in it.")
 		exit()
 
@@ -102,8 +102,7 @@ if __name__ == '__main__':
 
 
 	#get the names of all the fna files in the data/ncbi/data directory
-	fna_sequence_file_list = glob.glob('data/ncbi/data/*/*.fna')
-
+	fna_sequence_file_list = glob.glob('data/ncbi/cds/*.fna')
 	#make the 'strainlist.txt' file by getting metadata in the ncbi masterLtable.tab file.
 	strain_lookup_dictionary = {}
 	fh = open('data/ncbi/master_table.tab','r')
@@ -123,7 +122,6 @@ if __name__ == '__main__':
 		strain_info_line = (species + " " + strain + " [" + assembly_id + "; " + biosample_id + "; " + bioproject_id  + "; " + assembly_status + "]")
 		strain_lookup_dictionary[assembly_index] = strain_info_line
 	fh.close()
-
 	#rename the fna files in the fna directory and build the strainlist.txt file
 	fh3 = open('strainlist.txt','w')	
 	temp_fna_filename_list = []
@@ -183,5 +181,5 @@ if __name__ == '__main__':
 		remove_command = "rm " + temp_fna_filename[0]
 		os.system(remove_command)
 		
-		concatenate_fna_files_command = "cat data/fna/*.fna > data/fna/all.fna"
-		os.system(concatenate_fna_files_command)
+	concatenate_fna_files_command = "cat data/fna/*.fna > data/fna/all.fna"
+	os.system(concatenate_fna_files_command)

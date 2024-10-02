@@ -283,7 +283,7 @@ if __name__ == '__main__':
 						str('\t'.join(header_list)) + '\n')
 
 		for header2 in header_list:
-			accession_in_header2 = "lcl|" + header2[0:header2.find(" ")] #find gives the location of the first space and you trim the string from zero to the first space.
+			accession_in_header2 = "lcl|" + header2[0:header2.find(" ")][1:] #find gives the location of the first space and you trim the string from one to the first space.
 			locus_tag_in_header2_front = header2[(header2.find("locus_tag=")+10):]
 			locus_tag_in_header2 = locus_tag_in_header2_front[:locus_tag_in_header2_front.find("] ")]
 			WP_tag_in_header2_front = header2[(header2.find("protein_id=")+11):]

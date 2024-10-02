@@ -61,7 +61,7 @@ if __name__ == '__main__':
 
 		cdsfna_files_from_zip = [x for x in allfna_files_from_zip if '/cds_from_genomic.fna' in x]
 		if len(cdsfna_files_from_zip) != 0:
-			output_directory_name = './data/ncbi/cds_fasta/'
+			output_directory_name = './data/ncbi/cds/'
 			file_suffix = '.fna'
 			directory_setter(output_directory_name, directory_list)
 			for file_name in cdsfna_files_from_zip:
@@ -98,5 +98,10 @@ if __name__ == '__main__':
 			directory_setter(output_directory_name, directory_list)
 			for file_name in protein_files_from_zip:
 				zipextractor(file_name, output_directory_name, file_suffix)
-				
-	
+
+	master_table = open('data/ncbi/master_table.tab', 'w')
+	master_table.write("Accession\tSpecies\tStrain\tBioProject\tBioSample\tLevel\n")
+	master_table.close()
+
+	fill_master_table_command = "dataformat tsv genome --inputfile data/ncbi/assembly_data_report.jsonl --fields accession,ani-submitted-species,assminfo-biosample-strain,assminfo-bioproject,assminfo-biosample-accession,assminfo-level --elide-header >> data/ncbi/master_table.tab"
+	os.system(fill_master_table_command)

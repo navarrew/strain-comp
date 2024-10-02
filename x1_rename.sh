@@ -72,9 +72,9 @@ mkdir data/ncbi
 
 #move the data folder to the top level ('.') directory.
 mv ncbi_dataset/data/ data/ncbi/
+mv data/ncbi/cds_fasta data/ncbi/data
+#remname the cds_fasta folder 
 
-#remname the data folder as 'input'
-#mv data input
 
 #delete the ncbi_dataset folder which should be empty anyway at this point.
 rm -rf ncbi_dataset

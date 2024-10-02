@@ -66,15 +66,15 @@ if __name__ == '__main__':
 		for line in f:
 			search_terms.append(line.rstrip()) 
 
-	input_table = pd.read_csv('cluster_metadata.tab', sep='\t')	
+	input_table = pd.read_csv('data/mmseq_output/cluster_metadata.tab', sep='\t')	
 	output_table = input_table[input_table.isin(search_terms).any(axis=1)]
-	output_table.to_csv('output.tab', sep='\t')
+	output_table.to_csv('searchoutput.tab', sep='\t')
 	accession_list = list(output_table['ACCESSION'])
 
-	protein_output_file = open('proteins.faa', 'w')
-	nucleotide_output_file = open('nucleotide.fna', 'w')
+	protein_output_file = open('search_proteins.faa', 'w')
+	nucleotide_output_file = open('search_nucleotide.fna', 'w')
 
-	input_seq_iterator = SeqIO.parse("all.fna", "fasta")
+	input_seq_iterator = SeqIO.parse("data/fna/all.fna", "fasta")
 	for record in input_seq_iterator:
 		if record.id in accession_list:
 			nucleotide_output_file.write(record.format("fasta"))
