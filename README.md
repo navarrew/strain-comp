@@ -108,19 +108,13 @@ datasets download genome accession --inputfile accessions.txt --include cds --as
 ```
 
 
-## Step 1 - prepare raw NCBI data files for use with 1_rename.sh 
+## Step 1 - prepare raw NCBI data files for use with 1_unzip_ncbi.py 
 
 Make a directory for your project and put the zip file of genomic data inside of it.  
 In the terminal go to the project directory, activate the conda environment you have created for this pipeline, then type:
 
 ```
-unzip ncbi_dataset.zip
-```
-
-then...
-
-```
-1_rename.sh
+1_unzip_ncbi.py
 ```
 
 
