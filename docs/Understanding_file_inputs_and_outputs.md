@@ -22,6 +22,8 @@ Author: William Navarre
 <tr><td valign="top">7_geneorder.py</td><td valign="top">Python script to rearrange the data in the cluster_table cells to put genomic gene order up front.  This allows fast sorting of genes in a genome by their location and makes it easy to spot genomic islands. </td><tr>
 <tr><td valign="top">8_COGadd.py</td><td valign="top">Python script to incorporate deepnog COG annotations and metatdata into the cluster_table.tab/xlsx files. </td><tr>
 <tr><td valign="top">9_KEGGadd.py</td><td valign="top">Python script to incorporate KEGG annotations from their program 'kofamscan' into the cluster_table.tab/xlsx files. </td><tr>
+<tr><td valign="top">10_tabletrimmer.py</td><td valign="top">Python script to remove strains from the analysis without having to start the whole process from step 1. </td><tr>
+<tr><td valign="top">11_sequence_grabber.py</td><td valign="top">Python script to incorporate retrieve protein and/or nucleotide sequences based on their CLUSTER ID, their NCBI WP number, or their locus id. </td><tr>
 </table>
 
 
