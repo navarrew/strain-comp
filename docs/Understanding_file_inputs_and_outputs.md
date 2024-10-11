@@ -13,9 +13,9 @@ Author: William Navarre
 <tr><td valign="top">/docs</td><td valign="top">Directory containing markdown files (like this one) and images that are found within the markdown docs. </td><tr>
 <tr><td valign="top">/sample_data</td><td valign="top">Directory containing sample data for you to work with when testing the directory.</td><tr>
 <tr><td valign="top">README.md</td><td valign="top">The main markdown file explaining the purpose and contents of the repository, listing of links to specific content.</td><tr>
-<tr><td valign="top">1_rename.sh</td><td valign="top">A shell (bash or zsh) script that renames data files downloaded from NCBI into something useable. </td><tr>
-<tr><td valign="top">2_process_ncbi.py</td><td valign="top">Python script. </td><tr>
-<tr><td valign="top">3_mmseqcluster.py</td><td valign="top">Python script. </td><tr>
+<tr><td valign="top">1_unzip_ncbi.py</td><td valign="top">A script that renames data files downloaded from NCBI into something useable, generates a strain table, and establishes the folders needed for the next step. </td> <tr>
+<tr><td valign="top">2_process_ncbi.py</td><td valign="top">Python script. This script takes the NCBI cds files and converts them to protein FASTA files (suffix .faa).  It also makes the final strainlist with the metadata used for the column headers.</td><tr>
+<tr><td valign="top">3_mmseqcluster.py</td><td valign="top">Python script.  Invokes the mmseq2 program based on user input to cluster the proteins of the strains based on similarity.  It generates a 'cluster_metadata.tab' file and a 'reprsentative proteins.faa' file.</td><tr>
 <tr><td valign="top">4_maketable.py</td><td valign="top">Python script. </td><tr>
 <tr><td valign="top">5_heatmap.py</td><td valign="top">Python script. </td><tr>
 <tr><td valign="top">6_formatxl.py</td><td valign="top">Python script. </td><tr>
