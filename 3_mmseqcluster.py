@@ -250,7 +250,7 @@ if __name__ == '__main__':
 	repr_file = open('data/mmseq_output/cluster_representative_sequences.faa', 'w')
 	head_file = open('data/mmseq_output/cluster_header_info.tab', 'w')
 	cluster_metadata_file = open('data/mmseq_output/cluster_metadata.tab', 'w')
-	cluster_metadata_file.write('LOCUS_ID\tCLUSTER_ID\tPROTEIN_ID\tACCESSION\tNCBI_ANNOTATION\n')
+	cluster_metadata_file.write('LOCUS_ID\tCLUSTER_ID\tPROTEIN_ID\tACCESSION\tNCBI_NUCLEOTIDE\tLOCATION\tDIRECTION\tNOTE\tNCBI_ANNOTATION\n')
 
 	# Set index for cluster number
 	j = 1
@@ -284,13 +284,35 @@ if __name__ == '__main__':
 
 		for header2 in header_list:
 			accession_in_header2 = "lcl|" + header2[0:header2.find(" ")][1:] #find gives the location of the first space and you trim the string from one to the first space.
+			ncbi_nucleotide_in_header2 = header2[0:header2.find("_cds_")][1:]
+			location_in_header2_front = header2[(header2.find("location=")+9):]
+			location_in_header2 = location_in_header2_front[:location_in_header2_front.find("] ")]
+			if 'complement' in location_in_header2:
+				nucleotide_direction = 'R'
+			else:
+				nucleotide_direction = 'F'
+			note = ""
+			if "<1.." in location_in_header2:
+				if nucleotide_direction == 'F':
+					note = "coding sequence truncated at 5' end"
+				if nucleotide_direction == 'R':
+					note = "coding sequence truncated at 3' end"
+			elif "..>" in location_in_header2:
+				if nucleotide_direction == 'F':
+					note = "coding sequence truncated at 3' end"
+				if nucleotide_direction == 'R':
+					note = "coding sequence truncated at 5' end"
+			if "<1..>" in location_in_header2:
+				note = "coding sequence truncated at both ends"
+			if "join" in location_in_header2:
+				note = "coding sequence contains slip sequence or crosses the origin of a circular DNA sequence"
 			locus_tag_in_header2_front = header2[(header2.find("locus_tag=")+10):]
 			locus_tag_in_header2 = locus_tag_in_header2_front[:locus_tag_in_header2_front.find("] ")]
 			WP_tag_in_header2_front = header2[(header2.find("protein_id=")+11):]
 			WP_tag_in_header2 = WP_tag_in_header2_front[:WP_tag_in_header2_front.find("] ")]
 			info_tag_in_header2_front = header2[(header2.find("protein=")+8):]
 			info_tag_in_header2 = info_tag_in_header2_front[:info_tag_in_header2_front.find("] ")]
-			cluster_metadata_file.write(locus_tag_in_header2 + '\t' + cluster_prefix + cluster_index + '\t' + WP_tag_in_header2 + '\t' + accession_in_header2 + '\t' + info_tag_in_header2 + "\n")
+			cluster_metadata_file.write(locus_tag_in_header2 + '\t' + cluster_prefix + cluster_index + '\t' + WP_tag_in_header2 + '\t' + accession_in_header2 + '\t' + ncbi_nucleotide_in_header2 + '\t' + location_in_header2 + '\t' + nucleotide_direction + '\t' + note + '\t' + info_tag_in_header2 + "\n")
 			
 		# Increase the number of clusters processed by 1
 		j += 1

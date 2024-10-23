@@ -39,30 +39,30 @@ def line_format(seq):
 └----------------------------------------┘
 '''	
 	
-
 if __name__ == '__main__':
+	instructions = "TO BE FILLED IN LATER"
 
-# 	parser = argparse.ArgumentParser(add_help=True, description=instructions)
-# 	parser.add_argument('-d', '--data', action='store', dest='metadata_file', help = "Pct identity for clustering (30-99, default = 80).")
-# 	parser.add_argument('-q', '--query', action='store', dest='search_terms', help = "Pct mutual coverage of protein length (30-99, default = 90).")
-# 	parser.add_argument('-o', '--out', action='store', dest='output', help = "Name prefix for clusters (DEFAULT = CLUSTER.")
-# 	
-# 	args = parser.parse_args()
-# 
-# 	if args.metadata_file:
-# 		clustering_pct = int(args.clustering_pct)
-# 	else: clustering_pct = 80
-# 
-# 	if args.coverage_length:
-# 		coverage_length = int(args.coverage_length)
-# 	else: coverage_length = 90
-# 
-# 	if args.clustername:
-# 		cluster_prefix = args.clustername + "_"
-# 	else: cluster_prefix = "CLUSTER_"
+	parser = argparse.ArgumentParser(add_help=True, description=instructions)
+	parser.add_argument('-m', '--met', action='store', dest='metadata_file', help = "Name and path of metatdata file (default = data/mmseq_output/cluster_metadata.tab).")
+	parser.add_argument('-i', '--in', action='store', dest='search_terms', help = "Name and path of file with search terms (default = 'searchterms.txt').")
+# 	parser.add_argument('-o', '--out', action='store', dest='output', help = "Output file names.")
+	
+	args = parser.parse_args()
+
+	if args.metadata_file:
+		metadata_filename = args.metadata_file
+	else: metadata_filename = "data/mmseq_output/cluster_metadata.tab"
+
+	if args.search_terms:
+		search_filename = args.search_terms
+	else: search_filename = 'searchterms.txt'
+
+# 	if args.output:
+# 		output_filename = args.output
+# 	else: output_filename = "XXXX"
 
 	search_terms = []
-	with open('searchterms.txt', 'r') as f:
+	with open(search_filename, 'r') as f:
 		for line in f:
 			search_terms.append(line.rstrip()) 
 

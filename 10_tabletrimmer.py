@@ -37,7 +37,7 @@ if __name__ == '__main__':
 
     print("You have a total number of " + str(strain_max))
 
-    full_sorted_heads = ['CLUSTER', 'gene names', 'functions', 'total count', 'strain count'] + str_list
+    full_sorted_heads = ['CLUSTER', 'NCBI gene names', 'NCBI annotations', 'GCpct', 'GC spread', 'protein length', 'flags', 'total count', 'strain count'] + str_list
     count_sorted_heads = ['CLUSTER', 'total count', 'strain count'] + str_list
 
     reord_count_tab = pd.read_csv('tab/cluster_hit_count_table.tab', sep='\t')[count_sorted_heads]
