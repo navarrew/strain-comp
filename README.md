@@ -23,7 +23,7 @@ The right portion of the table has data for each strain/isolate (one strain per 
 
 ## Dependencies ##
 
-All but one of these scripts are coded in Python.  The other script is a (bash or zsh) shell script.
+All of these scripts are coded in Python.  We run them in the context of a bash or zsh unix shell because the scripts sometimes issue system commands.
 
 These scripts depend on several other packages (each of which also depend on packages).  In total over 90 different packages will be installed to get these scripts to work.  Fortunately most of these are installed automatically by just intalling a few important top-level packages like biopython, pandas, and seaborn.
   1. **python** >= 3.11 (see conda/anaconda below)
@@ -68,10 +68,10 @@ Check their permissions to see if they are 'executable'.  If not you should make
 
 ## Getting started analyzing genomes - the basic steps involved ##
 
-1.	Make a new directory (we'll call the project directory) for your project.
+1.	Make a new directory (we'll call it the project directory) for your project.
 2.	Download data using the ncbi-datasets command line interface.
 3.	Put the data in your project directory.  Unzip it.
-4.	Rename the datafiles using the 1_rename.sh script.
+4.	Rename the datafiles using the 1_ncbi_unzip.py script.
 5.	Extract metadata, translate nucleotide to protein seqeuences with 2_process_ncbi.py script.
 6.	Cluster similar proteins and name the clusters with 3_mmseqcluster.py
 7.	Make a tab delimited file that provides metadata for all protein clusters and compares them across all strains with the 4_maketable.py script.
@@ -108,19 +108,13 @@ datasets download genome accession --inputfile accessions.txt --include cds --as
 ```
 
 
-## Step 1 - prepare raw NCBI data files for use with 1_rename.sh 
+## Step 1 - prepare raw NCBI data files for use with 1_unzip_ncbi.py 
 
 Make a directory for your project and put the zip file of genomic data inside of it.  
 In the terminal go to the project directory, activate the conda environment you have created for this pipeline, then type:
 
 ```
-unzip ncbi_dataset.zip
-```
-
-then...
-
-```
-1_rename.sh
+1_ncbi_unzip.py
 ```
 
 
