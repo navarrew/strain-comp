@@ -202,6 +202,12 @@ To execute the script simply type:
 
 The output will appear in the `tables` directory as `cluster_table_geneordered.tab`
 
+# Getting sequence data back out of your analysis.
+## Retrieving individual gene/protein sequences using 'sequence_grabber.py'.
+
+
+## Retrieving large regions of genome surrounding your gene of interest 'region_grabber.py'.
+
 # Adding data from other annotation tools like kofamscan (KEGG) and deepnog (COG)
 We have developed scripts to take output from kofamscan and deepnog searches and incorporate them into the cluster_table.tab file (which can also be parsed by formatxl.py).
 
