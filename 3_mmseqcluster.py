@@ -250,7 +250,7 @@ if __name__ == '__main__':
 	repr_file = open('data/mmseq_output/cluster_representative_sequences.faa', 'w')
 	head_file = open('data/mmseq_output/cluster_header_info.tab', 'w')
 	cluster_metadata_file = open('data/mmseq_output/cluster_metadata.tab', 'w')
-	cluster_metadata_file.write('LOCUS_ID\tCLUSTER_ID\tPROTEIN_ID\tACCESSION\tNCBI_NUCLEOTIDE\tLOCATION\tDIRECTION\tNOTE\tNCBI_ANNOTATION\n')
+	cluster_metadata_file.write('LOCUS_ID\tCLUSTER_ID\tPROTEIN_ID\tACCESSION\tNCBI_NUCLEOTIDE\tLOCATION\tDIRECTION\tNCBI_ANNOTATION\tNOTE\n')
 
 	# Set index for cluster number
 	j = 1
@@ -289,6 +289,7 @@ if __name__ == '__main__':
 			location_in_header2 = location_in_header2_front[:location_in_header2_front.find("] ")]
 			if 'complement' in location_in_header2:
 				nucleotide_direction = 'R'
+				location_in_header2 = location_in_header2[11:-1] #remove the compliment text and parentheses from the location
 			else:
 				nucleotide_direction = 'F'
 			note = ""
@@ -305,14 +306,17 @@ if __name__ == '__main__':
 			if "<1..>" in location_in_header2:
 				note = "coding sequence truncated at both ends"
 			if "join" in location_in_header2:
-				note = "coding sequence contains slip sequence or crosses the origin of a circular DNA sequence"
+				if ",1.." in location_in_header2:
+					note = "coding sequence may cross origin of a circular DNA sequence"
+				else:
+					note = "coding sequence may contain translation frameshift sequence"
 			locus_tag_in_header2_front = header2[(header2.find("locus_tag=")+10):]
 			locus_tag_in_header2 = locus_tag_in_header2_front[:locus_tag_in_header2_front.find("] ")]
 			WP_tag_in_header2_front = header2[(header2.find("protein_id=")+11):]
 			WP_tag_in_header2 = WP_tag_in_header2_front[:WP_tag_in_header2_front.find("] ")]
 			info_tag_in_header2_front = header2[(header2.find("protein=")+8):]
 			info_tag_in_header2 = info_tag_in_header2_front[:info_tag_in_header2_front.find("] ")]
-			cluster_metadata_file.write(locus_tag_in_header2 + '\t' + cluster_prefix + cluster_index + '\t' + WP_tag_in_header2 + '\t' + accession_in_header2 + '\t' + ncbi_nucleotide_in_header2 + '\t' + location_in_header2 + '\t' + nucleotide_direction + '\t' + note + '\t' + info_tag_in_header2 + "\n")
+			cluster_metadata_file.write(locus_tag_in_header2 + '\t' + cluster_prefix + cluster_index + '\t' + WP_tag_in_header2 + '\t' + accession_in_header2 + '\t' + ncbi_nucleotide_in_header2 + '\t' + location_in_header2 + '\t' + nucleotide_direction + '\t' + info_tag_in_header2 + '\t' + note + "\n")
 			
 		# Increase the number of clusters processed by 1
 		j += 1
