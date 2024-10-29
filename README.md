@@ -225,7 +225,6 @@ The region_grabber.py script makes it easy.  Simply create a text file with the 
                         Output folder name (default = 'regiongrab').
   -m METADATA_FILE, --meta METADATA_FILE
                         Name and path of input metatdata file (default = data/mmseq_output/cluster_metadata.tab).
-
 ```
 
 Example use: the following command will grab the nucleotide sequence of the gene with locus ID HMPREF1575_RS04835 and add 1000 bases to both sides.  It will output a genbank formatted file (for viewing by clinker, for example) and an fna file (for nucleotide alignments).  Because this is a chloride channel you could name the output folder 'chloride'.  This will create a new folder in your project directory with the gbff and fna files inside of it.

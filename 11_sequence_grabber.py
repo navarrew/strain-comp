@@ -107,7 +107,6 @@ if __name__ == '__main__':
 	    index += 1
 	    metadata_output_filename = os.path.join(output_foldername, f"{output_foldername}_metadata({index}).tab")
 
-
 	output_table.to_csv(metadata_output_filename, sep='\t', index=False)
 
 	accession_list = list(output_table['ACCESSION'])

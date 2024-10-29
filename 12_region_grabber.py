@@ -162,10 +162,10 @@ if __name__ == '__main__':
 			location_start = 1
 		print(f"{nucleotide_accession} from {location_start} to {location_end} ({gene_direction})")
 
-
 #To limit the number of times you have to re-download a given gbff file from NCBI if you're
-#trying different parsings, we save the full length genome or contig in the full_gbff directory
-#if the contig/genome was previously downloaded you just parse that file instead.
+#trying different parsings, we save the full length genome or contig in the full_gbff directory.
+#If the contig/genome was previously downloaded in another run of the program 
+#you will just parse that file instead and save time.
 
 		filename = f"{full_gbff_directory}/{nucleotide_accession}.gbff"
 		if not os.path.exists(filename):
@@ -186,10 +186,10 @@ if __name__ == '__main__':
 		b=record.name
 		c=record.description.split(',')[0]
 		d=record.annotations
-		
+
 #if adding more sequence to the 3' end of the sequence extends beyond the end of the contig
 #the retrieval will still work but the user will think they have grabbed more sequence than
-#they acxtually have.  So we set the sequence range to end at the last base of the contig
+#they actually have.  So we set the sequence range to end at the last base of the contig
 		if location_end > (len(record)):
 			location_end = (len(record))
 
