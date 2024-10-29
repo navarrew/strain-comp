@@ -203,23 +203,35 @@ To execute the script simply type:
 The output will appear in the `tables` directory as `cluster_table_geneordered.tab`
 
 # Getting sequence data back out of your analysis.
-## Retrieving individual gene/protein sequences using 'sequence_grabber.py'.
+## Retrieve individual gene/protein sequences using 'sequence_grabber.py'.
 What if, after this analysis, you want to grab the protein or nucleotide sequences of all proteins in CLUSTER_10?  Or all those with an annotation 'lactate dehydrogenase'?  Or individual genes/proteins based on their locusIDs and or WP numbers?
 
 The sequence_grabber.py script makes it easy.
 
 
-## Retrieving large regions of genome surrounding your gene of interest 'region_grabber.py'.
+## Retrieve large regions of genome surrounding your gene of interest using 'region_grabber.py'.
 What if, after this analysis, you want to grab not only a set of genes of interest, but also the 1000 nucleotides upstream and 4000 nucleotides downstream of the gene?  This would be useful for comparing the surrounding genomic locations across strains with programs like Clinker or the Artemis Comparison Tool (ACT).  
 
 The region_grabber.py script makes it easy.  Simply create a text file with the search terms you will look for and put it in the main project directory.  This can include the cluster ID (from the cluster_table), a list of WP_numbers, a list of NCBI Locus IDs, or even the NCBI annotation (e.g. 'lactate dehyrodgenase).  
 
 ```
--r', '--range', bases upstream (5') and downstream (3') of genes of interest (format: upstream:downstream, default = 0:0)
--i, '--input', a file containing the search terms you are using (deault name = searchterms.txt)
--m', '--meta', name and location of the mmseqcluster.py metadata input file used to get info about the location of each gene
-    (default = data/mmseq_output/cluster_metadata.tab)
--o', '--output', name of the output folder for the genbank and FASTA files (default = regiongrab).
+  -r, --range
+                        Nucleotides to add before and after gene separated by a colon (default = '0:0').
+  -i, --in
+                        Name and path of file with search terms (default = 'searchterms.txt').
+  -s SEARCH_TERM, --search SEARCH_TERM
+                        A specific search term fed by user, will override any search term file present.
+  -o OUTPUT, --out OUTPUT
+                        Output folder name (default = 'regiongrab').
+  -m METADATA_FILE, --meta METADATA_FILE
+                        Name and path of input metatdata file (default = data/mmseq_output/cluster_metadata.tab).
+
+```
+
+Example use: the following command will grab the nucleotide sequence of the gene with locus ID HMPREF1575_RS04835 and add 1000 bases to both sides.  It will output a genbank formatted file (for viewing by clinker, for example) and an fna file (for nucleotide alignments).  Because this is a chloride channel you could name the output folder 'chloride'.  This will create a new folder in your project directory with the gbff and fna files inside of it.
+
+```
+12_region_grabber.py -r 1000:1000 -s HMPREF1575_RS04835 -o chloride
 ```
 
 
