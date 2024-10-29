@@ -76,7 +76,7 @@ Check their permissions to see if they are 'executable'.  If not you should make
 6.	Cluster similar proteins and name the clusters with 3_mmseqcluster.py
 7.	Make a tab delimited file that provides metadata for all protein clusters and compares them across all strains with the 4_maketable.py script.
 8.	Use hierarchical clustering to group strains and protein clusters together with the 5_heatmap.py script
-9.	Get pretty readable output with the 6_formatxl.py script.
+9.	Get a pretty Excel output with the 6_formatxl.py script.
 
 ![strain-comp workflow](/docs/pipeline.png)
 
