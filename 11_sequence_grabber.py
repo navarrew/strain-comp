@@ -1,8 +1,12 @@
 #!/usr/bin/env python
 
 """
-grabber.py
-This script takes input from a list of clusterIDs or WPs or locusIds or accessions and gives back what you want.
+sequence_grabber.py
+This script takes input from a file or command line of clusterIDs or WPs or 
+locusIds or accessions or even NCBI annotations and spits out the particular genes
+that meet the criteria both in fna and faa format.
+
+These will appear in a 
 """
 
 '''
@@ -14,6 +18,7 @@ import argparse
 import numpy as np
 import pandas as pd
 from Bio import SeqIO
+import os
 
 '''
 ┌----------------------------------------┐
@@ -33,6 +38,14 @@ def line_format(seq):
 	output = '\n'.join(newline_list)
 	return output
 
+def create_directories(base_dir='genegrab'):
+	# Check if the base directory exists
+	if not os.path.exists(base_dir):
+		# Create the base directory if it doesn't exist
+		os.makedirs(base_dir)
+		print(f"Created directory: {base_dir}")
+	else:
+		print(f"Directory '{base_dir}' already exists.")
 '''
 ┌----------------------------------------┐
 | main program start					 |
@@ -40,39 +53,83 @@ def line_format(seq):
 '''	
 	
 if __name__ == '__main__':
-	instructions = "TO BE FILLED IN LATER"
 
+	metadata_filename = "data/mmseq_output/cluster_metadata.tab"
+	search_filename = 'searchterms.txt'
+	output_foldername = 'genegrab'
+	instructions = "Put genes you want to grab in a file (default name 'searchterms.txt')\n" \
+				"or use the -s flag and separate your terms with a comma and enclose\n" \
+				"in quotations if there's spaces in one of your search terms.\n"\
+				"e.g. -s 'class C sortase,CLUSTER_000001'"
+
+#parse the command line for user input
 	parser = argparse.ArgumentParser(add_help=True, description=instructions)
-	parser.add_argument('-m', '--met', action='store', dest='metadata_file', help = "Name and path of metatdata file (default = data/mmseq_output/cluster_metadata.tab).")
-	parser.add_argument('-i', '--in', action='store', dest='search_terms', help = "Name and path of file with search terms (default = 'searchterms.txt').")
-# 	parser.add_argument('-o', '--out', action='store', dest='output', help = "Output file names.")
-	
+	parser.add_argument('-i', '--in', action='store', dest='search_term_file', help = "Name and path of file with search terms (default = 'searchterms.txt').")
+	parser.add_argument('-s', '--search', action='store', dest='search_term', help = "A specific search term fed by user")
+	parser.add_argument('-o', '--out', action='store', dest='output', help = "Output folder name (default = 'genegrab').")
+	parser.add_argument('-m', '--meta', action='store', dest='metadata_file', help = "Name and path of input metatdata file (default = data/mmseq_output/cluster_metadata.tab).")
+
 	args = parser.parse_args()
 
 	if args.metadata_file:
 		metadata_filename = args.metadata_file
-	else: metadata_filename = "data/mmseq_output/cluster_metadata.tab"
 
-	if args.search_terms:
-		search_filename = args.search_terms
-	else: search_filename = 'searchterms.txt'
+	if args.search_term:
+		user_defined_search_term = args.search_term
+		print(user_defined_search_term)
+		
+	if args.search_term_file:
+		search_filename = args.search_term_file
 
-# 	if args.output:
-# 		output_filename = args.output
-# 	else: output_filename = "XXXX"
+	if args.output:
+		output_foldername = args.output
 
+	create_directories(output_foldername)
+
+#now create a list of the terms we will search for in the cluster_metadata.tab file
 	search_terms = []
-	with open(search_filename, 'r') as f:
-		for line in f:
-			search_terms.append(line.rstrip()) 
+	if user_defined_search_term:
+		search_terms = user_defined_search_term.split(",")
+
+	elif search_filename:
+		with open(search_filename , 'r') as f:
+			for line in f:
+				search_terms.append(line.rstrip()) 
 
 	input_table = pd.read_csv('data/mmseq_output/cluster_metadata.tab', sep='\t')	
 	output_table = input_table[input_table.isin(search_terms).any(axis=1)]
-	output_table.to_csv('searchoutput.tab', sep='\t')
+
+# Set the initial metadata output filename
+	index = 0
+	metadata_output_filename = os.path.join(output_foldername, f"{output_foldername}_metadata.tab")
+# Increment the filename until an available one is found
+	while os.path.exists(metadata_output_filename):
+	    index += 1
+	    metadata_output_filename = os.path.join(output_foldername, f"{output_foldername}_metadata({index}).tab")
+
+
+	output_table.to_csv(metadata_output_filename, sep='\t', index=False)
+
 	accession_list = list(output_table['ACCESSION'])
 
-	protein_output_file = open('search_proteins.faa', 'w')
-	nucleotide_output_file = open('search_nucleotide.fna', 'w')
+# Set the initial protein output filename
+	index = 0
+	protein_output_filename = os.path.join(output_foldername, f"{output_foldername}_protein.faa")
+# Increment the filename until an available one is found
+	while os.path.exists(protein_output_filename):
+	    index += 1
+	    protein_output_filename = os.path.join(output_foldername, f"{output_foldername}_protein({index}).faa")
+
+# Set the initial nucleotide output filename
+	index = 0
+	nucleotide_output_filename = os.path.join(output_foldername, f"{output_foldername}_nucleotide.faa")
+# Increment the filename until an available one is found
+	while os.path.exists(nucleotide_output_filename):
+	    index += 1
+	    nucleotide_output_filename = os.path.join(output_foldername, f"{output_foldername}_nucleotide({index}).faa")
+
+	protein_output_file = open(protein_output_filename, 'w')
+	nucleotide_output_file = open(nucleotide_output_filename, 'w')
 
 	input_seq_iterator = SeqIO.parse("data/fna/all.fna", "fasta")
 	for record in input_seq_iterator:

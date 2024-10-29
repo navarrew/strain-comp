@@ -26,7 +26,7 @@ from Bio import SeqIO, Entrez
 └------------------┘
 '''
 
-def create_directories(base_dir='grab', sub_dirs=['full_gbff', 'gbff', 'fna'], suffix=''):
+def create_directories(base_dir='regiongrab', sub_dirs=['full_gbff', 'gbff', 'fna'], suffix=''):
 	# Check if the base directory exists
 	directory_list = []
 	if not os.path.exists(base_dir):
@@ -111,14 +111,13 @@ if __name__ == '__main__':
 
 #now create directories with a main grab directory with a gbff and fna directory inside
 	folder_list = create_directories(output_foldername, suffix=output_foldername_suffix)
-	print(folder_list)
 	full_gbff_directory = folder_list[0]
 	gbff_directory = folder_list[1]
 	fna_directory = folder_list[2]
 	
 	search_terms = []
 	if user_defined_search_term:
-		search_terms.append(user_defined_search_term.rstrip())
+		search_terms = user_defined_search_term.split(",")
 
 	elif search_filename:
 		with open(search_filename , 'r') as f:
