@@ -164,7 +164,7 @@ if __name__ == '__main__':
 		for record in SeqIO.parse(temp_fna_filename[0], "fasta"):
 			old_description_line = record.description
 			fragmented_description = old_description_line.split("[gbkey")
-			GC_content = str(100*gc_fraction(record.seq))
+			GC_content = float(100*gc_fraction(record.seq))
 			middle_fragment = "[pctGC="+ str('{:.4}'.format(GC_content)) + "] [gbkey"
 			record.description = fragmented_description[0] + middle_fragment + fragmented_description[1]
 			output_handle_fna.write(">" + record.description+"\n")

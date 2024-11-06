@@ -88,7 +88,7 @@ if __name__ == '__main__':
 
 #now create a list of the terms we will search for in the cluster_metadata.tab file
 	search_terms = []
-	if user_defined_search_term:
+	if args.search_term:
 		search_terms = user_defined_search_term.split(",")
 
 	elif search_filename:
@@ -121,11 +121,11 @@ if __name__ == '__main__':
 
 # Set the initial nucleotide output filename
 	index = 0
-	nucleotide_output_filename = os.path.join(output_foldername, f"{output_foldername}_nucleotide.faa")
+	nucleotide_output_filename = os.path.join(output_foldername, f"{output_foldername}_nucleotide.fna")
 # Increment the filename until an available one is found
 	while os.path.exists(nucleotide_output_filename):
 	    index += 1
-	    nucleotide_output_filename = os.path.join(output_foldername, f"{output_foldername}_nucleotide({index}).faa")
+	    nucleotide_output_filename = os.path.join(output_foldername, f"{output_foldername}_nucleotide({index}).fna")
 
 	protein_output_file = open(protein_output_filename, 'w')
 	nucleotide_output_file = open(nucleotide_output_filename, 'w')

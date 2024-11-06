@@ -74,25 +74,26 @@ def get_matches_from_cluster(str_loc_pre, members_list):
 	"""
 	Takes a strain locus prefix and a list of members in a cluster from a single line of "cluster_header_info.tab".
 	Outputs a string and list of protein matches for the cluster in the given strain.
-	"""
-	
+	"""   
 	match_list = []
+
+	# Use a static list to store members that matched
+	members_to_remove = []
+
 	for member in members_list:
-#		mem_loc_pre = get_locus_tag(member.split('[locus_tag=')[1].split('] ')[0])
-#		if mem_loc_pre == str_loc_pre:
-		str_loc_prefix = str_loc_pre + "_"
-		if str_loc_prefix in member:
+		if str_loc_pre + "_" in member:
 			member_form = convert_fasta_header_format(member)
 			# Append the hit to a growing list of hits for this particular strain
 			match_list.append(member_form)
-			# Remove the match from the list to shorten future searches through it, saving time
-			members_list.remove(member)
-	# If there are one or more matches in the list,
-	# Add the number of matches in the list and join all the matches together
+			members_to_remove.append(member)  # Add matched member to the removal list
+
+	# Remove matched members after the loop finishes
+	for member in members_to_remove:
+		members_list.remove(member)
+
 	if len(match_list) >= 1:
-		matches = '[' + str(len(match_list)) + ']|' + str(', '.join(match_list))
+		matches = '[' + str(len(match_list)) + ']|' + str(', '.join(match_list))	
 		return matches, match_list
-	# If there are no matches in the list, use "*" as a placeholder
 	else:
 		matches = '*'
 		return matches, match_list

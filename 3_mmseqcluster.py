@@ -191,7 +191,11 @@ if __name__ == '__main__':
 	else: coverage_length = 90
 
 	if args.clustername:
-		cluster_prefix = args.clustername + "_"
+		if args.clustername[-1] == "_":
+			cluster_prefix = args.clustername
+		else:
+			cluster_prefix = args.clustername + "_"
+			
 	else: cluster_prefix = "CLUSTER_"
 
 	# Write the date and time of execution, and the % identity cutoff to the report file
@@ -256,21 +260,21 @@ if __name__ == '__main__':
 	j = 1
 
 	summ_file.write('#Number of clusters: ' + str(len(cluster_list)) + '\n')
-	summ_file.write('#Cluster prefix: ' + cluster_prefix + '\n')
+	summ_file.write('#Cluster prefix: ' + cluster_prefix[-1] + '\n')
 
 	for cluster in cluster_list:
 
-		# Write the cluster number, number of members, and headers and protein sequences of all members in each cluster
+# Write the cluster number, number of members, and headers and protein sequences of all members in each cluster
 		cluster_index = str(j).zfill(6)
 		summ_file.write('#' + cluster_prefix + cluster_index +
 						' [members= ' + str(len(cluster)) + ']\n' +
 						(str('\n'.join(cluster)) + '\n'))
 
-		# Write the header and protein sequence of the most representative member of each cluster
+# Write the header and protein sequence of the most representative member of each cluster
 		repr_file.write(str('>' + cluster_prefix + cluster_index + '_' + cluster[0][1:] + '\n'))
 
-		# Iterate through each member within a cluster and extract the gene and protein names from the header
-		# Write the cluster number, gene and protein names, number of members, and headers of all members
+# Iterate through each member within a cluster and extract the gene and protein names from the header
+# Write the cluster number, gene and protein names, number of members, and headers of all members
 		header_list = []
 		for member in cluster:
 			header = member.split('\n')[0]
@@ -282,6 +286,7 @@ if __name__ == '__main__':
 						str(len(cluster)) + '\t' +
 						str('\t'.join(header_list)) + '\n')
 
+#make the cluster_metadata.tab file.
 		for header2 in header_list:
 			accession_in_header2 = "lcl|" + header2[0:header2.find(" ")][1:] #find gives the location of the first space and you trim the string from one to the first space.
 			ncbi_nucleotide_in_header2 = header2[0:header2.find("_cds_")][1:]
