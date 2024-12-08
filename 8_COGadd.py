@@ -57,9 +57,10 @@ if __name__ == '__main__':
 
     directory_list = list(tree2list("."))
     cwd = os.getcwd()
+    print(directory_list)
     if "Dropbox/bio" in cwd:
-        Dropbox_directory_first_part = cwd.split('Dropbox/bio')[0]
-
+        Dropbox_directory_first_part = "Users/williamnavarre/"
+    Dropbox_directory_first_part = "/Users/williamnavarre/"
 #     dropbox_directory_list = list(tree2list("~/Dropbox/bio"))
 #     print(dropbox_directory_list)
 
@@ -77,8 +78,8 @@ if __name__ == '__main__':
                     "....if you violate these rules you have to tell the script where these files are."
 
     parser = argparse.ArgumentParser(add_help=True, description=instructions,formatter_class=argparse.RawTextHelpFormatter)
-    parser.add_argument('-f', '--fasta', action='store', dest='infile', help = "name/location of input faa file (default = cluster_representative_sequences.faa).")
-    parser.add_argument('-t', '--tab', action='store', dest='tabfolder', help = "location of cluster_table.tab (default = tab/cluster_table.tab)")
+    parser.add_argument('-f', '--fasta', action='store', dest='infile', help = "name/location of input faa file (default = data/mmseq_output/cluster_representative_sequences.faa).")
+    parser.add_argument('-t', '--tab', action='store', dest='tabfolder', help = "location of cluster_table.tab (default = data/tables/cluster_table.tab)")
     parser.add_argument('-od', '--outdir', action='store', dest='outdir', help = "set name/location of output directory without leading or trailing '/' symbols or dots (default = data/COG).")
     parser.add_argument('-o', '--outfile', action='store', dest='outfile', help = "set name of the output file (default = cluster_table_with_COGs.tab)")
     parser.add_argument('-d', '--definitions', action='store', dest='def_loc', help = "location of the COG definitions table (default = (custom)/Dropbox/bio/tools/COG/cog-20.def.tab)")
@@ -100,7 +101,7 @@ if __name__ == '__main__':
 
     if args.tabfolder:
         tabfolder = args.tabfolder
-    else: tabfolder = "tables/cluster_table.tab"
+    else: tabfolder = "data/tables/cluster_table.tab"
 
     if args.outfile:
         outfile = args.outfile
